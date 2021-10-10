@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { getUser, removeUserSession,setUserSession } from '../Utils/Common'; 
+import { getToken, getUser, removeUserSession,setUserSession } from '../Utils/Common'; 
 import Nav from '../components/Nav';
 
 
@@ -11,7 +11,7 @@ function Dashboard(props) {
     removeUserSession();
     props.history.push('/login');
   }
-  if (setUserSession ===true) {
+  if (getToken==null) {
     return <div className="content">Checking Authentication...</div>
   }
  
