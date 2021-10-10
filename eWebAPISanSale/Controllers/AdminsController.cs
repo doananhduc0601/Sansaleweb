@@ -12,9 +12,11 @@ using System.Text;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Security.Cryptography;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eWebAPISanSale.Controllers
 {
+    
     [Route("api/[controller]")]
     [ApiController]
     public class AdminsController : ControllerBase
@@ -80,24 +82,43 @@ namespace eWebAPISanSale.Controllers
             return userWithToken;
         }
 
+
+        ////[HttpPost("checktoken")]
+        ////public async Task<ActionResult<UserWithToken>> Checktoken([FromBody] RefreshRequet refreshRequet)
+        ////{
+        ////    Admin admin = GetUserFromAccessToken(refreshRequet.AccessToken);
+
+        ////    if (admin != null && ValidateRefreshToken(admin, refreshRequet.RefreshToken))
+
+        ////    {
+        ////        UserWithToken userWithToken = new UserWithToken(admin);
+        ////        //userWithToken.AccessToken = GenerateAccessToken(admin.Id);
+
+        ////        return userWithToken;
+        ////    }
+
+        ////    return null;
+
+        //}
+        [Authorize]
         [HttpPost("RefreshToken")]
-        public async Task<ActionResult<UserWithToken>> RefreshToken([FromBody] RefreshRequet refreshRequet)
+        public async Task<ActionResult<RefreshRequet>> RefreshToken([FromBody] RefreshRequet refreshRequet)
         {
             Admin admin = GetUserFromAccessToken(refreshRequet.AccessToken);
 
             if (admin != null && ValidateRefreshToken(admin, refreshRequet.RefreshToken))
-                   
-            {
-                        UserWithToken userWithToken = new UserWithToken(admin);
-                        userWithToken.AccessToken = GenerateAccessToken(admin.Id);
 
-                        return userWithToken;
+            {
+                UserWithToken userWithToken = new UserWithToken(admin);
+                //userWithToken.AccessToken = GenerateAccessToken(admin.Id);
+
+                return refreshRequet;
             }
 
             return null;
 
         }
-        
+
 
 
         private bool ValidateRefreshToken(Admin admin, string refreshToken)
