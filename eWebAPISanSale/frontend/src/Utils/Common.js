@@ -14,7 +14,7 @@ export const getUser = () => {
   // remove the token and user from the session storage
   export const removeUserSession = () => {
     sessionStorage.removeItem('accessToken');
-    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('name');
   }
    
   // set the token and user from the session storage
