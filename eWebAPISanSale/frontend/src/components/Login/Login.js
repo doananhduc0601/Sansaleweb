@@ -24,9 +24,9 @@ function Login(props) {
       .then(response => {
       setLoading(false);
       
-      setUserSession(response.data.accessToken, response.data.name);
+      setUserSession(response.data.accessToken,response.data.name);
        
-      props.history.push('/Dashboard');
+      props.history.push('/dashboard');
     }).catch(error => {
       setLoading(false);
       if (error.response.status === 401) setError(error.response.data.message);
