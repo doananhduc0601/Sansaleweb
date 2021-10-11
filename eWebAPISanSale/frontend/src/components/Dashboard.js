@@ -1,11 +1,11 @@
 
-import React,{useEffect, useState } from 'react';
-import { getrfToken, getToken, getUser, removeUserSession,setUserSession } from '../Utils/Common'; 
+import React from 'react';
+import { getToken, getUser, removeUserSession } from '../Utils/Common'; 
 import Nav from '../components/Nav';
 import axios from 'axios';
 
 function Dashboard(props) {
-  const [authLoading, setAuthLoading] = useState(true);
+ 
   const name = getUser();
   const token = getToken();
   
@@ -17,6 +17,7 @@ function Dashboard(props) {
     { headers : {"Authorization": `Bearer ${token}`}})
     .then((response) => {
       var response = response.data;
+      
     },
     (error)=>{
       removeUserSession();
