@@ -10,15 +10,21 @@ export const getUser = () => {
   export const getToken = () => {
     return sessionStorage.getItem('accessToken') || null;
   }
+  export const getrfToken = () => {
+    return sessionStorage.getItem('refreshToken') || null;
+  }
+
    
   // remove the token and user from the session storage
   export const removeUserSession = () => {
     sessionStorage.removeItem('accessToken');
-    sessionStorage.removeItem('username');
+    sessionStorage.removeItem('name');
+    sessionStorage.removeItem('name');
   }
    
   // set the token and user from the session storage
   export const setUserSession = (accessToken, name) => {
     sessionStorage.setItem('accessToken', accessToken);
+    
     sessionStorage.setItem('name', JSON.stringify(name));
   }
