@@ -1,6 +1,6 @@
 import React from "react";
-import { getToken, getUser, removeUserSession } from "../Utils/Common";
-import Nav from "../components/Nav";
+import { getToken, getUser, removeUserSession } from "../../Utils/Common";
+// import Nav from "./Nav";
 import axios from "axios";
 
 function Dashboard(props) {
@@ -39,7 +39,8 @@ function Dashboard(props) {
 
   return (
     <div>
-      <Nav />
+      {/* <Nav /> */}
+
       <input type="button" onClick={handleLogout} value="Logout" />
       <br />
       <br />

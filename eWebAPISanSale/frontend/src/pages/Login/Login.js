@@ -74,7 +74,7 @@ function Login(props) {
         </div>
         <button
           className="w-100 btn btn-lg "
-          type="submit"
+          type="button"
           value={loading ? "Loading..." : "Login"}
           onClick={handleLogin}
           disabled={loading}
