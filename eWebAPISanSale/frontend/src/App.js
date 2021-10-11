@@ -1,35 +1,33 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-
-// import Login from "./components/Login/Login";
-// import Dashboard from "./components/Dashboard";
-// import Home from "./components/Home";
-// import PrivateRoute from "./Utils/PrivateRoute";
-// import PublicRoute from "./Utils/PublicRoute";
-import routes from "./routes";
-
 import "./App.css";
-import { render } from "@testing-library/react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Home from "./pages/HomePage/Home";
+import Login from "./pages/Login/Login";
+import Dashboard from "./pages/Dashboard";
+import Menu from "./components/Menu/Menu";
+import Nav from "./Nav";
 
-function App() extends Component{
-  render(){
+import PrivateRoute from "./Utils/PrivateRoute";
+import PublicRoute from "./Utils/PublicRoute";
+// import routes from "./routes";
+
+class App extends Component {
+  render() {
     return (
       <Router>
-        <div>
-          <div className="container">
-            <main className="row">
-              {/* <Route path="/" exact component={Home} />
-              <PublicRoute path="/login" exact component={Login} />
-              <PrivateRoute path="/dashboard" exact component={Dashboard} />
-              <Route path="/tablist" exact component={TableList}/> */}
-              {this.showContentMenus(routes)}
-            </main>
-          </div>
+        <div className="App">
+          <Menu />
+          {/* <Nav /> */}
+          {/* <main className="row"> */}
+          <PublicRoute path="/login" component={Login} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
+          {/* <Route path="/tablist" exact component={TableList}/> */}
+          {/* {this.showContentMenus(routes)} */}
+          {/* </main> */}
         </div>
-      <Router>
-  );
+      </Router>
+    );
   }
-  
 }
 
 export default App;
