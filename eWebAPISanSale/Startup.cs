@@ -98,7 +98,7 @@ namespace eWebAPISanSale
             app.UseAuthorization();
             app.UseCors(options => options
             
-                .WithOrigins("http://localhost:3001", "http://localhost:5001", "http://localhost:3000")
+                .WithOrigins("http://localhost:5001", "http://localhost:3001", "http://localhost:3000")
                 .AllowAnyHeader()
                .AllowAnyMethod()
                .AllowCredentials()
