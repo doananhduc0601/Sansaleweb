@@ -2,26 +2,26 @@ import React, { Component } from "react";
 import { Route, Link } from "react-router-dom";
 
 const menus = [
-  // {
-  //   name: "Trang Chủ",
-  //   to: "/",
-  //   exact: true,
-  // },
-  // {
-  //   name: "Đăng nhập",
-  //   to: "/login",
-  //   exact: true,
-  // },
-  // {
-  //   name: "Quản lý sản phẩm",
-  //   to: "/dashboard",
-  //   exact: true,
-  // },
-  // {
-  //   name: "Setting",
-  //   to: "/dashboard",
-  //   exact: true,
-  // },
+  {
+    name: "Trang Chủ",
+    to: "/",
+    exact: true,
+  },
+  {
+    name: "Đăng nhập",
+    to: "/login",
+    exact: true,
+  },
+  {
+    name: "Quản lý sản phẩm",
+    to: "/dashboard",
+    exact: true,
+  },
+  {
+    name: "Setting",
+    to: "/dashboard",
+    exact: true,
+  },
 ];
 
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
