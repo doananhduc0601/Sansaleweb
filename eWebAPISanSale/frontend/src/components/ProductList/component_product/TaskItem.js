@@ -5,10 +5,18 @@ class TaskItem extends Component {
     var { task, index } = this.props;
     return (
       <tr>
-        <td>{index + 22}</td>
+        <td>{index}</td>
         <td>{task.name}</td>
         <td class="text-center">
-          <span class="label label-success">Kích Hoạt</span>
+          <span
+            class={
+              task.status === true
+                ? "label label-success"
+                : "label label-danger"
+            }
+          >
+            Kích Hoạt
+          </span>
         </td>
         <td class="text-center">
           <button type="button" class="btn btn-warning">
