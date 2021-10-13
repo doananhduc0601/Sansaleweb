@@ -1,45 +1,23 @@
 import React, { Component } from "react";
-import { AiFillCloseCircle } from "react-icons/ai";
 
 class TaskForm extends Component {
-  onCloseForm = () => {
-    this.props.onCloseForm();
-  };
   render() {
-    const style = { color: "red", fontSize: "1.7em" };
     return (
       <div class="panel panel-warning">
         <div class="panel-heading">
-          <h3 class="panel-title">
-            Thêm Công Việc------------
-            <AiFillCloseCircle
-              style={style}
-              onClick={this.onCloseForm}
-              text-align="center"
-            />
-          </h3>
+          <h3 class="panel-title">Thêm Công Việc</h3>
         </div>
         <div class="panel-body">
           <form>
             <div class="form-group">
-              <label>Danh mục :</label>
-              <select class="form-control" required="required">
-                <option value="0">Điện tử</option>
-                <option value="1">Mỹ phẩm</option>
-                <option value="1">Card điện thoại</option>
-                <option value="1">Cần, ke, kẹo, cỏ</option>
-              </select>
-            </div>
-            <div class="form-group">
               <label>ID :</label>
               <input type="text" class="form-control" />
-
-              <label>tên :</label>
-              <select class="form-control" required="required">
-                <option value="1">Kích Hoạt</option>
-                <option value="0">Ẩn</option>
-              </select>
             </div>
+            <label>tên :</label>
+            <select class="form-control" required="required">
+              <option value="1">Kích Hoạt</option>
+              <option value="0">Ẩn</option>
+            </select>
             <label>tên bài viết :</label>
             <input type="text" class="form-control" />
             <label>Miêu tả :</label>
@@ -75,6 +53,7 @@ class TaskForm extends Component {
             <label>Link :</label>
             <input type="text" class="form-control" />
             <br />
+
             <div class="text-center">
               <button type="submit" class="btn btn-warning">
                 Thêm
