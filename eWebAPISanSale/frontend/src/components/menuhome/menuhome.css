@@ -153,8 +153,9 @@
 
       
     .header .navigation .menu  {
-        z-index:999;
+        
         position: fixed;
+        z-Index:999;
         display: block;
         background: var(--secondary-color);
         min-width: 350px;

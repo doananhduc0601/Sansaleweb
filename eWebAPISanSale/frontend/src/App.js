@@ -18,6 +18,7 @@ class App extends Component {
         
         <div className="App">
           <Header/>
+          <Menuhome/>
           
      
           <Route path="/" exact component={Home}/>
