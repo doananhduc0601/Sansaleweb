@@ -73,7 +73,7 @@ function Login(props) {
           </label>
         </div>
         <button
-          className="w-100 btn btn-lg "
+          className="w-100 btn-login btn-lg "
           type="button"
           value={loading ? "Loading..." : "Login"}
           onClick={handleLogin}
