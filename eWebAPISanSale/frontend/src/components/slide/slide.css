@@ -162,7 +162,23 @@
     }
     .carousel{
         position: relative;
-        z-index:-1;
+        z-index:1;
+    }
+    .slides2{
+        display: none;
+    }
+    .slides{
+        display: none;
+
+    }
+    .slides1{
+        display: none
+        ;
+    }
+    .carousel-inner .item img {
+        width: 400px !important;
+        height: 200px !important;
+        max-width: 400px !important;
     }
 
 }

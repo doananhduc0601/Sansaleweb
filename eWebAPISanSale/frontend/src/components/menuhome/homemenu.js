@@ -50,7 +50,7 @@ const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
         var active = match ? "active" : "";
         return (
           <li className={active}>
-            <Link to={to}> {label} </Link>{" "}
+            <Link to={to}> {label} </Link>
           </li>
         );
       }}
@@ -69,7 +69,7 @@ export default class App extends Component {
       <>
         <div className="header">
           <div className="navigation">
-            <Link className="logo"> Săn Sale </Link>{" "}
+            <Link className="logo"> Săn Sale </Link>
             <div className="search">
               <div className="i-serach">
                 <input
@@ -78,24 +78,24 @@ export default class App extends Component {
                   placeholder="Tìm sản phẩm "
                   alt=""
                 />
-              </div>{" "}
+              </div>
               <div className="b-serach">
                 <button className="btn-primary  icon " type="button">
                   <BsSearch />
-                </button>{" "}
-              </div>{" "}
-            </div>{" "}
+                </button>
+              </div>
+            </div>
             <button className="menu-btn btn-primary" onClick={this.Toggle}>
               <RiMenu3Fill />
-            </button>{" "}
+            </button>
             <ul className={this.state.toggle ? "menu active" : "menu"}>
               <button className="close-btn" onClick={this.Toggle}>
                 <RiCloseFill />
-              </button>{" "}
-              <li className="menu-item"> {this.showMenus(menus)} </li>{" "}
-            </ul>{" "}
-          </div>{" "}
-        </div>{" "}
+              </button>
+              <li className="menu-item"> {this.showMenus(menus)} </li>
+            </ul>
+          </div>
+        </div>
       </>
     );
   }
