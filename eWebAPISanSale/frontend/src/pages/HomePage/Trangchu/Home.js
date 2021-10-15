@@ -4,6 +4,7 @@ import Slidecare from '../../../components/caterory_menu/caterory_menu';
 import Slides from '../../../components/slide/slide';
 
 import EmployeeList from '../../../components/productimage/EmployeeList';
+import Dealsock from '../../../components/dealsock/dealsock';
 
 class Home extends Component {
     render() {
@@ -12,7 +13,7 @@ class Home extends Component {
       
             <Slides/>
            <Slidecare/>
-           
+           <Dealsock/>
             </div>
         );
     }

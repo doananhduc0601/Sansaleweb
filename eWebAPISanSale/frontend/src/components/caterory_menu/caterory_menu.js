@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
-import '../caterory_menu/caregory_menu.css';
+import './caregory_menu.css';
 import { BsChevronRight,BsChevronLeft } from 'react-icons/bs';
 const categroty =[
     './img/iconcomputer.PNG',
