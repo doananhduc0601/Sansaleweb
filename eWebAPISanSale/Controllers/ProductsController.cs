@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eWebAPISanSale.Models;
 using Microsoft.AspNetCore.Authorization;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace eWebAPISanSale.Controllers
 {
@@ -16,10 +18,12 @@ namespace eWebAPISanSale.Controllers
     public class ProductsController : ControllerBase
     {
         private readonly SanSaleContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ProductsController(SanSaleContext context)
+        public ProductsController(SanSaleContext context,IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: api/Products
@@ -78,14 +82,15 @@ namespace eWebAPISanSale.Controllers
         // POST: api/Products
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        [Authorize]
+        
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
+        public async Task<ActionResult<Product>> PostProduct([FromForm]Product product)
         {
+            //product.Image = await SaveImage(product.FormFile);
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            return StatusCode(201);
         }
 
         // DELETE: api/Products/5
@@ -107,6 +112,18 @@ namespace eWebAPISanSale.Controllers
         private bool ProductExists(int id)
         {
             return _context.Products.Any(e => e.Id == id);
+        }
+        [NonAction]
+        public async Task<string> SaveImage(IFormFile imageFile)
+        {
+            string imageName = new String(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace("", "-");
+            imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
+            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
+            using (var fileStream = new FileStream(imagePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(fileStream);
+            }
+            return imageName;
         }
     }
 }

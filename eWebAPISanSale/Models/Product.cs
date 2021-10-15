@@ -32,6 +32,7 @@ namespace eWebAPISanSale.Models
         public bool? Status { get; set; }
         public DateTime? TopHot { get; set; }
         public int? ViewCount { get; set; }
+        public string Link { get; set; }
 
         public virtual Category Category { get; set; }
     }
