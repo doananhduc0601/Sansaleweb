@@ -7,7 +7,7 @@ import PrivateRoute from "./Utils/PrivateRoute";
 import PublicRoute from "./Utils/PublicRoute";
 import Home from "./pages/HomePage/Trangchu/Home";
 import Baiviet from "./pages/HomePage/BaiViet/Baiviet";
-import Menuhome from "./components/menuhome/menuhome";
+import HomeMenu from "./components/menuhome/homemenu";
 import Header from "./components/headerconteact/header";
 import ProductList from "./components/ProductList/ProductList";
 class App extends Component {
@@ -16,7 +16,7 @@ class App extends Component {
       <BrowserRouter>
         <div className="App">
           <Header />
-          <Menuhome />
+          <HomeMenu />
 
           <Route path="/" exact component={Home} />
           <Route path="/baiviet" component={Baiviet} />
