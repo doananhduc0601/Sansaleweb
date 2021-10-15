@@ -230,6 +230,10 @@ namespace eWebAPISanSale.Models
 
                 entity.Property(e => e.IncludedVat).HasColumnName("IncludedVAT");
 
+                entity.Property(e => e.Link)
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
+
                 entity.Property(e => e.MetaDescriptions)
                     .HasMaxLength(250)
                     .IsFixedLength();

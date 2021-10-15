@@ -1,24 +1,27 @@
 .search {
     width: 50%;
     height: 50px;
-    display:flex;
+    display: flex;
     max-width: 400px;
 }
-    .search .i-serach {
-        width:300px;
-    }
-    .search .b-serach {
-        width:90px ;
-        height: 35px;
-        line-height: 0px!important;
-    }
-    .icon {
-        width: 90px;
-        height: 35px;
-        margin-left:5px ;
-        background-color:var(--primary-color);
-        border-radius:5px ;
-    }
+
+.search .i-serach {
+    width: 300px;
+}
+
+.search .b-serach {
+    width: 90px;
+    height: 35px;
+    line-height: 0px!important;
+}
+
+.icon {
+    width: 90px;
+    height: 35px;
+    margin-left: 5px;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+}
 
 .header {
     z-index: 999;
@@ -47,19 +50,17 @@
     text-transform: uppercase;
     text-decoration: none;
     letter-spacing: 2px;
-    width:15%;
+    width: 15%;
 }
+
 .header .navigation {
     position: relative;
-    
     transition: 0.6s;
     transition-property: line-height;
     display: flex;
     justify-content: center;
-    width:100%;
+    width: 100%;
 }
-
-
 
 .menu {
     position: relative;
@@ -67,33 +68,33 @@
     justify-content: center;
     list-style: none;
     user-select: none;
-    width:50%;
-   margin-top: 5px;
+    width: 50%;
+    margin-top: 5px;
 }
-.menu-item{
+
+.menu-item {
     display: flex;
 }
 
-
-.menu-item li{
+.menu-item li {
     width: 90px;
     height: 30px;
     text-align: center;
 }
 
-.menu-item .active{
+.menu-item .active {
     border-radius: 5px;
     background-color: var(--primary-color);
 }
 
-.menu-item .active a{
-    display:inline-block;
-    color:#fff;
+.menu-item .active a {
+    display: inline-block;
+    color: #fff;
 }
 
-.menu-item a{
-    display:inline-block;
-    padding:5px;
+.menu-item a {
+    display: inline-block;
+    padding: 5px;
     text-decoration: none;
 }
 
@@ -106,7 +107,6 @@
 }
 
 @media (max-width: 1024px) {
-
     .header {
         z-index: 999;
         width: 100%;
@@ -115,15 +115,12 @@
         box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
         transition: 0.6s;
         color: black;
-        
     }
-    .header .navigation{
+    .header .navigation {
         position: fixed;
         width: 100%;
         justify-content: initial;
-
     }
-   
     .header .logo {
         color: var(--primary-color);
         font-size: 1.8em;
@@ -132,30 +129,22 @@
         text-decoration: none;
         letter-spacing: 1px;
         width: 30%;
-       
     }
-
-        .header .navigation .menu {
-            display: none;
-        }
-
-        .menu-btn {
+    .header .navigation .menu {
+        display: none;
+    }
+    .menu-btn {
         position: absolute;
         width: 50px;
         height: 35px;
-        top:0px;
+        top: 0px;
         display: initial;
         background: var(--primary-color);
-        border-radius: 5px ;
-        
-       
+        border-radius: 5px;
     }
-
-      
-    .header .navigation .menu  {
-        
+    .header .navigation .menu {
         position: fixed;
-        z-Index:999;
+        z-Index: 999;
         display: block;
         background: var(--secondary-color);
         min-width: 350px;
@@ -168,93 +157,78 @@
         transition: 0.5s;
         transition-property: right, visibility;
     }
-
-    .menu-item{
+    .menu-item {
         display: block;
     }
-    .menu-item li{
+    .menu-item li {
         width: 90px;
         height: 30px;
         margin: auto;
         margin-top: 30px;
         text-align: center;
-        
     }
-    
-    .menu-item .active{
-      display: none;
+    .menu-item .active {
+        display: none;
     }
-    .menu-item a{
-        display:inline-block;
-        padding:5px;
+    .menu-item a {
+        display: inline-block;
+        padding: 5px;
         text-decoration: none;
         color: white;
         width: 100px;
     }
-
     .close-btn {
-        
         position: absolute;
         width: 60px;
         height: 40px;
         background-size: 25px;
         background-position: center;
-        
         margin: 25px;
         display: block;
-        background-color:#fff;
-        border-radius:30px ;
+        background-color: #fff;
+        border-radius: 30px;
     }
-
-   
-        .menu-item{
-            display: block;
-        }
-        .menu-item li{
-            width: 200px;
-            height: 30px;
-            margin: auto;
-            margin-top: 30px;
-            text-align: center;
-            
-        }
-        
-        .menu-item .active{
-          display: block;
-          
-          background-color: #fff;
-
-        }
-        .menu-item .active a{
-            color: var(--secondary-color);
-        }
-        .menu-item a{
-            display:inline-block;
-          
-            text-decoration: none;
-            color: white;
-            width: 100px;
-        }
-        .search {
-            width: 40%;
-            height: 40px;
-            margin-top: auto;
-          
-        }
-            .search .i-serach {
-                width:300px;
-            }
-            .search .b-serach {
-                width:100px ;
-                height: 35px;
-                line-height: 0px!important;
-            }
-            .icon {
-                width: 50px;
-                height: 35px;
-                margin-left:5px ;
-                background-color:var(--primary-color);
-                border-radius:5px ;
-            }
-      
+    .menu-item {
+        display: block;
+    }
+    .menu-item li {
+        width: 200px;
+        height: 30px;
+        margin: auto;
+        margin-top: 30px;
+        text-align: center;
+    }
+    .menu-item .active {
+        display: block;
+        background-color: #fff;
+    }
+    .menu-item .active a {
+        color: var(--secondary-color);
+    }
+    .menu-item a {
+        display: inline-block;
+        text-decoration: none;
+        color: white;
+        width: 100px;
+    }
+    .search {
+        width: 40%;
+        height: 40px;
+        margin-top: auto;
+    }
+    .search .i-serach {
+        width: 300px;
+    }
+    .search .b-serach {
+        width: 100px;
+        height: 35px;
+        line-height: 0px!important;
+    }
+    .icon {
+        width: 50px;
+        height: 35px;
+        margin-left: 5px;
+        background-color: var(--primary-color);
+        border-radius: 5px;
+    }
 }
