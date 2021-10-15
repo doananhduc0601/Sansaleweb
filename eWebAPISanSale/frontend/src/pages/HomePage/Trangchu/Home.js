@@ -12,7 +12,7 @@ class Home extends Component {
       
             <Slides/>
            <Slidecare/>
-           <EmployeeList/>
+           
             </div>
         );
     }
