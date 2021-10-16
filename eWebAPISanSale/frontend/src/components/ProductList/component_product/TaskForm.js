@@ -4,7 +4,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 const defaultImageSrc = "/img/thecao.png";
 
 const initialFieldValues = {
-  
+  id: 0,
   name: "anhduc",
   code: "123",
   metaTitle: "anh",
@@ -117,7 +117,7 @@ export default function TaskForm(props) {
     e.preventDefault();
     if (validate()) {
       const formData = new FormData();
-      // formData.append("id", values.id);
+      formData.append("id", values.id);
       formData.append("name", values.name);
       formData.append("code", values.code);
       formData.append("metaTitle", values.metaTitle);
@@ -189,14 +189,14 @@ export default function TaskForm(props) {
             />
           </div>
           {/* 3. Thêm data */}
-          {/* <label>ID :</label>
+          <label>ID :</label>
           <input
             class="form-control"
             name="id"
             value={values.id}
             //value={this.state.id}
             onChange={handleInputChange}
-          /> */}
+          />
           <label>tên sản phẩm:</label>
           <input
             type="text"

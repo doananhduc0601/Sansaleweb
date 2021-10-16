@@ -30,7 +30,36 @@ namespace eWebAPISanSale.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts()
         {
-            return await _context.Products.ToListAsync();
+            return await _context.Products
+                .Select(x => new Product()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Code = x.Code,
+                    MetaTitle = x.MetaTitle,
+                    Description= x.Description,
+                    Image = x.Image,
+                    MoreImages = x.MoreImages,
+                    Price = x.Price,
+                    PromotionPrice = x.PromotionPrice,
+                    IncludedVat = x.IncludedVat,
+                    Quantity = x.Quantity,
+                    CategoryId = x.CategoryId,
+                    Detail = x.Detail,
+                    Warranty = x.Warranty,
+                    CreatedDate = x.CreatedDate,
+                    CreatedBy = x.CreatedBy,
+                    ModifiedDate = x.ModifiedDate,
+                    ModifiedBy = x.ModifiedBy,
+                    MetaKeywords = x.MetaKeywords,
+                    MetaDescriptions = x.MetaDescriptions,
+                    Status = x.Status,
+                    TopHot = x.TopHot,
+                    ViewCount = x.ViewCount,
+                    Link = x.Link,
+                    ImageSrc = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.Image)
+                })
+                .ToListAsync();
         }
 
         // GET: api/Products/5
@@ -51,11 +80,16 @@ namespace eWebAPISanSale.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(int id, Product product)
+        public async Task<IActionResult> PutProduct(int id, [FromForm] Product product)
         {
             if (id != product.Id)
             {
                 return BadRequest();
+            }
+            if (product.ImageFile != null)
+            {
+                DeleteImage(product.Image);
+                product.Image = await SaveImage(product.ImageFile);
             }
 
             _context.Entry(product).State = EntityState.Modified;
