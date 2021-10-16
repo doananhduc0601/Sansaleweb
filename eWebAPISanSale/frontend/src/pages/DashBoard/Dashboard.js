@@ -3,6 +3,11 @@ import { getToken, getUser, removeUserSession } from "../../Utils/Common";
 // import Nav from "./Nav";
 import axios from "axios";
 import Menu from "../../components/Menu/Menu";
+import { BrowserRouter, Route } from "react-router-dom";
+// import Header from "../../components/headerconteact/header";
+import ProductList from "../../components/ProductList/ProductList";
+// import PrivateRoute from "../../Utils/PrivateRoute";
+// import PublicRoute from "../../Utils/PublicRoute";
 
 function Dashboard(props) {
   const name = getUser();
@@ -18,7 +23,7 @@ function Dashboard(props) {
     })
     .then(
       (response) => {
-        //var response = response.data;
+        // props.history.push("/productlist");
       },
       (error) => {
         removeUserSession();
@@ -26,22 +31,16 @@ function Dashboard(props) {
       }
     );
 
-  // const token = getToken();
-  // const name = getUser();
-  // // handle click event of logout button
-  // const handleLogout = () => {
-  //   removeUserSession();
-  //   props.history.push('/login');
-  // }
-
-  // if (token==null) {
-  //   return <div className="content">Checking Authentication...</div>
-  // }
-
   return (
     <div>
-      {/* <Nav /> */}
-      <Menu />
+    <Menu />
+    {/* <BrowserRouter>
+        <div className="App">
+          
+          <Route path="/productlist" component={ProductList} />
+        </div>
+      </BrowserRouter> */}
+     
       <input type="button" onClick={handleLogout} value="Logout" />
       <br />
       <br />

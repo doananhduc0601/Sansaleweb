@@ -1,37 +1,40 @@
 import React, { useState, useEffect } from "react";
 import { AiFillCloseCircle } from "react-icons/ai";
+import Menu from "../../Menu/Menu";
 
 const defaultImageSrc = "/img/thecao.png";
 
 const initialFieldValues = {
-  
-  name: "anhduc",
-  code: "123",
-  metaTitle: "anh",
-  description: "a",
+  id: 0,
+  name: "",
+  code: "",
+  metaTitle: "",
+  description: "",
   image: "",
-  moreImages: "aa",
-  price: "123",
-  promotionPrice: "123",
-  includedVat: true,
-  quantity: "123",
-  categoryId: "1",
-  detail: "aa",
-  warranty: "12",
-  createdDate: "12/08/2021",
-  createdBy: "d",
-  modifiedDate: "12/08/2021",
-  modifiedBy: "c",
-  metaKeywords: "aaa",
-  metaDescriptions: "aaa",
+  moreImages: "",
+  price: "",
+  promotionPrice: "",
+  includedVat: "false",
+  quantity: "",
+  categoryId: "",
+  detail: "",
+  warranty: "",
+  createdDate:  "",
+  createdBy: "",
+  modifiedDate: "",
+  modifiedBy: "",
+  metaKeywords: "",
+  metaDescriptions: "",
   status: "True",
-  topHot: "11",
-  viewCount: "12",
-  link: "aa",
+  topHot: "",
+  viewCount: "",
+  link: "",
   // category: null,
   imageSrc: defaultImageSrc,
   imageFile: null,
 };
+
+
 
 export default function TaskForm(props) {
   ///////////////////// I. thành phần hiển thị bên trái
@@ -117,7 +120,7 @@ export default function TaskForm(props) {
     e.preventDefault();
     if (validate()) {
       const formData = new FormData();
-      // formData.append("id", values.id);
+      formData.append("id", values.id);
       formData.append("name", values.name);
       formData.append("code", values.code);
       formData.append("metaTitle", values.metaTitle);
@@ -145,6 +148,10 @@ export default function TaskForm(props) {
   const applyErrorClass = (field) =>
     ((field in errors && errors[field] == false) ? " invalid-field" : "");
 
+
+    const a = (values) =>{
+
+    }
   ///////////////////
   return (
     <div class="panel panel-warning">
@@ -164,7 +171,7 @@ export default function TaskForm(props) {
         {/* chuyền submit vào */}
         <form autoComplete="off" noValidate onSubmit={handleFormSubmit}>
           {/* 1. Hiển thị Category và chọn */}
-          <div class="form-group">
+          {/* <div class="form-group">
             <label>Danh mục :</label>
             <select class="form-control" required="required">
               <option value="0">Điện tử</option>
@@ -172,7 +179,7 @@ export default function TaskForm(props) {
               <option value="1">Card điện thoại</option>
               <option value="1">Cần, ke, kẹo, cỏ</option>
             </select>
-          </div>
+          </div> */}
           {/* 2. hình ảnh */}
           <img
             src={values.imageSrc}
@@ -189,14 +196,14 @@ export default function TaskForm(props) {
             />
           </div>
           {/* 3. Thêm data */}
-          {/* <label>ID :</label>
+          <label>ID :</label>
           <input
+            type="text"
             class="form-control"
             name="id"
             value={values.id}
-            //value={this.state.id}
             onChange={handleInputChange}
-          /> */}
+          />
           <label>tên sản phẩm:</label>
           <input
             type="text"
@@ -222,15 +229,15 @@ export default function TaskForm(props) {
             value={values.description}
             onChange={handleInputChange}
           />
-          <label>Tên image:</label>
+          {/* <label>Tên image:</label>
           <input
             type="text"
             class="form-control"
             name="image"
             value={values.image}
             onChange={handleInputChange}
-          />
-          <label>Giá đã giảm :</label>
+          /> */}
+          <label>Giá đã giảm :(kiểu số)</label>
           <input
             type="text"
             class="form-control"
@@ -238,7 +245,7 @@ export default function TaskForm(props) {
             value={values.price}
             onChange={handleInputChange}
           />
-          <label>Giá gốc :</label>
+          <label>Giá gốc :(kiểu số)</label>
           <input
             type="text"
             class="form-control"
@@ -254,30 +261,21 @@ export default function TaskForm(props) {
             value={values.quantity}
             onChange={handleInputChange}
           />
-          <label>Category ID:</label>
-          <input
-            type="text"
-            class="form-control"
-            name="categoryId"
-            value={values.categoryId}
-            onChange={handleInputChange}
-          />
-
-          {/* <label>Category ID :</label>
+          <label>Category ID :</label>
           <select
             class="form-control"
             required="required"
-            onChange={handleInputChange}
             name="categoryId"
-            //value={values.categoryId}
+            value={values.categoryId}
+            onChange={handleInputChange}
           >
-            <option value={values.categoryId}>1</option>
-            <option value={values.categoryId}>2</option>
-            <option value={values.categoryId}>3</option>
-            <option value={values.categoryId}>4</option>
-          </select> */}
+            <option value="1">1. Điện tử</option>
+            <option value="2">2. Mỹ phẩm</option>
+            <option value="3">3. Gia dụng</option>
+            <option value="4">4. Card điện thoại</option>
+          </select>
 
-          <label>Chi tiết :</label>
+          {/* <label>Chi tiết :</label>
           <input
             type="text"
             class="form-control"
@@ -285,17 +283,17 @@ export default function TaskForm(props) {
             value={values.detail}
             onChange={handleInputChange}
           />
-          <label>Bảo hiểm :</label>
+          <label>Bảo hiểm :(kiểu số)</label>
           <input
             type="text"
             class="form-control"
             name="warranty"
             value={values.warranty}
             onChange={handleInputChange}
-          />
+          /> */}
           <label>Ngày Tạo :</label>
           <input
-            type="text"
+            type="date"
             class="form-control"
             name="createdDate"
             value={values.createdDate}
@@ -309,9 +307,9 @@ export default function TaskForm(props) {
             value={values.createdBy}
             onChange={handleInputChange}
           />
-          <label>ngày sửa :</label>
+          {/* <label>ngày sửa :</label>
           <input
-            type="text"
+            type="date"
             class="form-control"
             name="modifiedDate"
             value={values.modifiedDate}
@@ -324,7 +322,7 @@ export default function TaskForm(props) {
             name="modifiedBy"
             value={values.modifiedBy}
             onChange={handleInputChange}
-          />
+          /> */}
           <label>Từ khóa :</label>
           <input
             type="text"
@@ -333,7 +331,7 @@ export default function TaskForm(props) {
             value={values.metaKeywords}
             onChange={handleInputChange}
           />
-          {/* <label>Status:</label>
+          <label>Status:</label>
           <select
             class="form-control"
             required="required"
@@ -341,25 +339,17 @@ export default function TaskForm(props) {
             value={values.status}
             onChange={handleInputChange}
           >
-            <option value={true}>True</option>
-            <option value={false}>False</option>
-          </select> */}
-          <label>Status :</label>
-          <input
-            type="text"
-            class="form-control"
-            name="status"
-            value={values.status}
-            onChange={handleInputChange}
-          />
-          <label>Số lượng đã xem :</label>
+            <option value="True">True</option>
+            <option value="False">False</option>
+          </select>
+          {/* <label>Số lượng đã xem :</label>
           <input
             type="text"
             class="form-control"
             name="viewCount"
             value={values.viewCount}
             onChange={handleInputChange}
-          />
+          /> */}
           <label>Link :</label>
           <input
             type="text"

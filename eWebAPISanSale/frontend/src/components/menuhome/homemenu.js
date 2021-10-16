@@ -35,11 +35,11 @@ const menus = [
     to: "/call",
     exact: true,
   },
-  {
-    name: "Quản lý",
-    to: "/productlist",
-    exact: true,
-  },
+  // {
+  //   name: "Quản lý",
+  //   to: "/productlist",
+  //   exact: true,
+  // },
 ];
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
   return (

@@ -3,28 +3,13 @@ import { Route, Link } from "react-router-dom";
 
 const menus = [
   {
-    name: "Trang Chủ",
-    to: "/",
-    exact: true,
-  },
-  {
-    name: "Đăng nhập",
-    to: "/login",
-    exact: true,
-  },
-  {
-    name: "Quản lý sản phẩm",
-    to: "/dashboard",
-    exact: true,
-  },
-  {
-    name: "Setting",
-    to: "/dashboard",
-    exact: true,
-  },
-  {
     name: "ProductList",
     to: "/productlist",
+    exact: true,
+  },
+  {
+    name: "DashBoard",
+    to: "/dashboard",
     exact: true,
   },
 ];
@@ -50,7 +35,7 @@ class Menu extends Component {
   render() {
     return (
       <div className="navbar navbar-default">
-        <ul className="nav navbar-nav-default">{this.showMenus(menus)}</ul>
+        <ul className="nav navbar-nav">{this.showMenus(menus)}</ul>
       </div>
     );
   }
