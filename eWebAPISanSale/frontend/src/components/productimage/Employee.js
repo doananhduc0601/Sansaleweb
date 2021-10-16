@@ -4,7 +4,9 @@ const defaultImageSrc = "/img/thecao.png";
 
 const initialFieldValues = {
   id: 0,
-  description: "",
+  categoryId: "1",
+ // description: "",
+  quantity: "123",
   link: "",
   image: "",
   imageSrc: defaultImageSrc,
@@ -69,8 +71,8 @@ export default function Employee(props) {
     if (validate()) {
       const formData = new FormData();
 
-      // formData.append('description', values.description)
-      //formData.append('link', values.link)
+      formData.append('categoryId', values.categoryId)
+      formData.append('quantity', values.quantity)
       formData.append("image", values.image);
       formData.append("imageFile", values.imageFile);
       addOrEdit(formData, resetForm);
@@ -101,9 +103,9 @@ export default function Employee(props) {
             <div className="form-group">
               <input
                 className={"form-control" + applyErrorClass("description")}
-                placeholder="Employee Name"
-                name="description"
-                value={values.description}
+                placeholder="categoryId"
+                name="categoryId"
+                value={parseInt(values.categoryId)}
                 onChange={handleInputChange}
               />
             </div>
@@ -113,6 +115,15 @@ export default function Employee(props) {
                 placeholder="link"
                 name="link"
                 value={values.link}
+                onChange={handleInputChange}
+              />
+            </div>
+            <div className="form-group">
+              <input
+                className="form-control"
+                placeholder="quantity"
+                name="quantity"
+                value={parseInt(values.quantity)}
                 onChange={handleInputChange}
               />
             </div>

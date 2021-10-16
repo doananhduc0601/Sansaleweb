@@ -1,9 +1,78 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import TaskForm from "./component_product/TaskForm";
 import Control from "./component_product/Control";
 import TaskList from "./component_product/TaskList";
+import axios from "axios";
 
 export default function ProductList() {
+  const [employeeList, setEmployeeList] = useState([])
+  const [recordForEdit, setRecordForEdit] = useState(null)
+
+  useEffect(() => {
+      refreshEmployeeList();
+  }, [])
+
+  const employeeAPI = (url = 'https://localhost:5001/api/Products') => {
+      return {
+          fetchAll: () => axios.get(url),
+          create: newRecord => axios.post(url, newRecord),
+          update: (id, updatedRecord) => axios.put(url + id, updatedRecord),
+          delete: id => axios.delete(url + id)
+      }
+  }
+
+  function refreshEmployeeList() {
+      employeeAPI().fetchAll()
+          .then(res => {
+              setEmployeeList(res.data)
+          })
+          .catch(err => console.log(err))
+  }
+
+  const addOrEdit = (formData, onSuccess) => {
+      // if (formData.get('id') == "0")
+          employeeAPI().create(formData)
+              .then(res => {
+                  onSuccess();
+                  refreshEmployeeList();
+              })
+              .catch(err => console.log(err))
+      // else
+      //     employeeAPI().update(formData.get('id'), formData)
+      //         .then(res => {
+      //             onSuccess();
+      //             refreshEmployeeList();
+      //         })
+      //         .catch(err => console.log(err))
+
+  }
+
+  const showRecordDetails = data => {
+      setRecordForEdit(data)
+  }
+
+  const onDelete = (e, id) => {
+      e.stopPropagation();
+      if (window.confirm('Are you sure to delete this record?'))
+          employeeAPI().delete(id)
+              .then(res => refreshEmployeeList())
+              .catch(err => console.log(err))
+  }
+
+  const imageCard = data => (
+      <div className="card" onClick={() => { showRecordDetails(data) }}>
+          <img src={data.imageSrc} className="card-img-top rounded-circle" />
+          <div className="card-body">
+              <h5>{data.employeeName}</h5>
+              <span>{data.occupation}</span> <br />
+              <button className="btn btn-light delete-button" onClick={e => onDelete(e, parseInt(data.id))}>
+                  <i className="far fa-trash-alt"></i>
+              </button>
+          </div>
+      </div>
+  )
+
+
   /////////////////////// I. Thành phần cũ /////
   // constructor(props) {
   //   super(props);
@@ -44,7 +113,8 @@ export default function ProductList() {
       <div class="row">
         {/* Phần bên trái */}
         <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <TaskForm />
+          <TaskForm  addOrEdit={addOrEdit}
+                    recordForEdit={recordForEdit} />
         </div>
         {/* phần bên phải */}
         <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">

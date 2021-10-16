@@ -86,7 +86,7 @@ namespace eWebAPISanSale.Controllers
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct([FromForm]Product product)
         {
-            //product.Image = await SaveImage(product.FormFile);
+            product.Image = await SaveImage(product.ImageFile);
             _context.Products.Add(product);
             await _context.SaveChangesAsync();
 
@@ -102,11 +102,12 @@ namespace eWebAPISanSale.Controllers
             {
                 return NotFound();
             }
-
+            DeleteImage(product.Image);
             _context.Products.Remove(product);
             await _context.SaveChangesAsync();
 
             return product;
+            
         }
 
         private bool ProductExists(int id)
@@ -116,7 +117,7 @@ namespace eWebAPISanSale.Controllers
         [NonAction]
         public async Task<string> SaveImage(IFormFile imageFile)
         {
-            string imageName = new String(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace("", "-");
+            string imageName = new String(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ', '+');
             imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
             var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
             using (var fileStream = new FileStream(imagePath, FileMode.Create))
@@ -124,6 +125,13 @@ namespace eWebAPISanSale.Controllers
                 await imageFile.CopyToAsync(fileStream);
             }
             return imageName;
+        }
+        [NonAction]
+        public void DeleteImage(string imageName)
+        {
+            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
+            if (System.IO.File.Exists(imagePath))
+                System.IO.File.Delete(imagePath);
         }
     }
 }
