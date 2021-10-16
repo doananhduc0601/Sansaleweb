@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace eWebAPISanSale.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
@@ -26,7 +26,15 @@ namespace eWebAPISanSale.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
         {
-            return await _context.Categories.ToListAsync();
+            return await _context.Categories
+                .Select(x => new Category()
+                {
+                    Id = x.Id,
+                    NameCategory = x.NameCategory,
+                    Status = x.Status,
+                    MetaTitle = x.MetaTitle,
+                })
+                .ToListAsync();
         }
         
         // GET: api/Categories/5
@@ -90,7 +98,7 @@ namespace eWebAPISanSale.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<Category>> PostCategory([FromForm] Category category)
         {
             _context.Categories.Add(category);
             try

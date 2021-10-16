@@ -27,6 +27,11 @@ const menus = [
     to: "/productlist",
     exact: true,
   },
+  {
+    name: "categorylist",
+    to: "/categorylist",
+    exact: true,
+  },
 ];
 
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {

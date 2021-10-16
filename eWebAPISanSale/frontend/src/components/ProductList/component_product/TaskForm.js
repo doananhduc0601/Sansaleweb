@@ -5,29 +5,29 @@ const defaultImageSrc = "/img/thecao.png";
 
 const initialFieldValues = {
   id: 0,
-  name: "anhduc",
-  code: "123",
-  metaTitle: "anh",
-  description: "a",
+  name: "",
+  //code: "",
+  metaTitle: "",
+  description: "",
   image: "",
-  moreImages: "aa",
-  price: "123",
-  promotionPrice: "123",
-  includedVat: true,
-  quantity: "123",
-  categoryId: "1",
-  detail: "aa",
-  warranty: "12",
-  createdDate: "12/08/2021",
-  createdBy: "d",
-  modifiedDate: "12/08/2021",
-  modifiedBy: "c",
-  metaKeywords: "aaa",
-  metaDescriptions: "aaa",
-  status: "True",
-  topHot: "11",
-  viewCount: "12",
-  link: "aa",
+  //moreImages: "",
+  price: "",
+  //promotionPrice: "",
+  //includedVat: "",
+  quantity: "",
+  categoryId: "",
+  //detail: "",
+  warranty: "",
+  createdDate: "",
+  createdBy: "",
+  //modifiedDate: "",
+  //modifiedBy: "",
+  metaKeywords: "",
+  metaDescriptions: "",
+  status: "",
+  //topHot: "",
+  //viewCount: "",
+  link: "",
   // category: null,
   imageSrc: defaultImageSrc,
   imageFile: null,
@@ -133,7 +133,7 @@ export default function TaskForm(props) {
       formData.append("modifiedDate", values.modifiedDate);
       formData.append("modifiedBy", values.modifiedBy);
       formData.append("metaKeywords", values.metaKeywords);
-       formData.append("status", values.status);
+      formData.append("status", values.status);
       formData.append("viewCount", values.viewCount);
       formData.append("link", values.link);
       formData.append("image", values.image);
@@ -143,7 +143,7 @@ export default function TaskForm(props) {
   };
 
   const applyErrorClass = (field) =>
-    ((field in errors && errors[field] == false) ? " invalid-field" : "");
+    field in errors && errors[field] == false ? " invalid-field" : "";
 
   ///////////////////
   return (
@@ -222,14 +222,14 @@ export default function TaskForm(props) {
             value={values.description}
             onChange={handleInputChange}
           />
-          <label>Tên image:</label>
+          {/* <label>Tên image:</label>
           <input
             type="text"
             class="form-control"
             name="image"
             value={values.image}
             onChange={handleInputChange}
-          />
+          /> */}
           <label>Giá đã giảm :</label>
           <input
             type="text"
@@ -246,38 +246,29 @@ export default function TaskForm(props) {
             value={values.promotionPrice}
             onChange={handleInputChange}
           />
-          <label>Hàng tồn :</label>
+          {/* <label>Hàng tồn :</label>
           <input
             type="text"
             class="form-control"
             name="quantity"
             value={values.quantity}
             onChange={handleInputChange}
-          />
-          <label>Category ID:</label>
-          <input
-            type="text"
-            class="form-control"
-            name="categoryId"
-            value={values.categoryId}
-            onChange={handleInputChange}
-          />
-
-          {/* <label>Category ID :</label>
+          /> */}
+          <label>Category ID :</label>
           <select
             class="form-control"
             required="required"
             onChange={handleInputChange}
             name="categoryId"
-            //value={values.categoryId}
+            value={values.categoryId}
           >
-            <option value={values.categoryId}>1</option>
-            <option value={values.categoryId}>2</option>
-            <option value={values.categoryId}>3</option>
-            <option value={values.categoryId}>4</option>
-          </select> */}
+            <option value="1">1. Điện tử</option>
+            <option value="2">2. Mỹ phẩm</option>
+            <option value="3">3. Gia dụng</option>
+            <option value="4">4. Card điện thoại</option>
+          </select>
 
-          <label>Chi tiết :</label>
+          {/* <label>Chi tiết :</label>
           <input
             type="text"
             class="form-control"
@@ -292,10 +283,10 @@ export default function TaskForm(props) {
             name="warranty"
             value={values.warranty}
             onChange={handleInputChange}
-          />
+          /> */}
           <label>Ngày Tạo :</label>
           <input
-            type="text"
+            type="date"
             class="form-control"
             name="createdDate"
             value={values.createdDate}
@@ -309,7 +300,7 @@ export default function TaskForm(props) {
             value={values.createdBy}
             onChange={handleInputChange}
           />
-          <label>ngày sửa :</label>
+          {/* <label>ngày sửa :</label>
           <input
             type="text"
             class="form-control"
@@ -332,8 +323,8 @@ export default function TaskForm(props) {
             name="metaKeywords"
             value={values.metaKeywords}
             onChange={handleInputChange}
-          />
-          {/* <label>Status:</label>
+          /> */}
+          <label>Status:</label>
           <select
             class="form-control"
             required="required"
@@ -341,25 +332,18 @@ export default function TaskForm(props) {
             value={values.status}
             onChange={handleInputChange}
           >
-            <option value={true}>True</option>
-            <option value={false}>False</option>
-          </select> */}
-          <label>Status :</label>
-          <input
-            type="text"
-            class="form-control"
-            name="status"
-            value={values.status}
-            onChange={handleInputChange}
-          />
-          <label>Số lượng đã xem :</label>
+            <option value="True">True</option>
+            <option value="False">False</option>
+          </select>
+
+          {/* <label>Số lượng đã xem :</label>
           <input
             type="text"
             class="form-control"
             name="viewCount"
             value={values.viewCount}
             onChange={handleInputChange}
-          />
+          /> */}
           <label>Link :</label>
           <input
             type="text"
