@@ -3,6 +3,7 @@ import TaskForm from "./component_product/TaskForm";
 import Control from "./component_product/Control";
 import TaskList from "./component_product/TaskList";
 import axios from "axios";
+import { NavItem } from "react-bootstrap";
 
 export default function ProductList() {
   const [employeeList, setEmployeeList] = useState([])
@@ -12,7 +13,7 @@ export default function ProductList() {
       refreshEmployeeList();
   }, [])
 
-  const employeeAPI = (url = 'https://localhost:5001/api/Products') => {
+  const employeeAPI = (url = 'https://localhost:5001/api/Products/') => {
       return {
           fetchAll: () => axios.get(url),
           create: newRecord => axios.post(url, newRecord),
@@ -25,25 +26,26 @@ export default function ProductList() {
       employeeAPI().fetchAll()
           .then(res => {
               setEmployeeList(res.data)
+              console.log(res.data)
           })
           .catch(err => console.log(err))
   }
 
   const addOrEdit = (formData, onSuccess) => {
-      // if (formData.get('id') == "0")
+    if (formData.get('id') == "0")
           employeeAPI().create(formData)
               .then(res => {
                   onSuccess();
                   refreshEmployeeList();
               })
               .catch(err => console.log(err))
-      // else
-      //     employeeAPI().update(formData.get('id'), formData)
-      //         .then(res => {
-      //             onSuccess();
-      //             refreshEmployeeList();
-      //         })
-      //         .catch(err => console.log(err))
+      else
+          employeeAPI().update(formData.get('id'), formData)
+              .then(res => {
+                  onSuccess();
+                  refreshEmployeeList();
+              })
+              .catch(err => console.log(err))
 
   }
 
@@ -59,18 +61,7 @@ export default function ProductList() {
               .catch(err => console.log(err))
   }
 
-  const imageCard = data => (
-      <div className="card" onClick={() => { showRecordDetails(data) }}>
-          <img src={data.imageSrc} className="card-img-top rounded-circle" />
-          <div className="card-body">
-              <h5>{data.employeeName}</h5>
-              <span>{data.occupation}</span> <br />
-              <button className="btn btn-light delete-button" onClick={e => onDelete(e, parseInt(data.id))}>
-                  <i className="far fa-trash-alt"></i>
-              </button>
-          </div>
-      </div>
-  )
+
 
 
   /////////////////////// I. Thành phần cũ /////
@@ -133,8 +124,72 @@ export default function ProductList() {
             <span class="fa fa-plus mr-5"></span>Generate
           </button>
           <Control />
-          <TaskList />
-          {/* tasks={tasks} */}
+          <div class="row mt-15">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-15">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center">STT</th>
+              <th class="text-center">Tên</th>
+              <th class="text-center">Giá Bán </th>
+              <th class="text-center">Giá giảm</th>
+              <th class="text-center">Mô tả</th>
+              <th class="text-center">Số lượng</th>
+              <th class="text-center">Trạng Thái</th>
+              <th class="text-center">Hành Động</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/* <tr>
+              <td></td>
+              <td>
+                <input type="text" class="form-control" />
+              </td> */}
+              {/* <td>
+                <select class="form-control">
+                  <option value="-1">Tất Cả</option>
+                  <option value="0">Ẩn</option>
+                  <option value="1">Kích Hoạt</option>
+                </select>
+              </td> */}
+              {/* <td></td>
+            </tr> */}
+            
+              {employeeList.map(item=>{
+                
+                 return (<tr>
+                          <td>{item.id}</td>
+                          <td>{item.name}</td>
+                          <td>{item.promotionPrice}</td>
+                          <td>{item.price}</td>
+                          <td>{item.description}</td>
+                          <td>{item.quantity}</td>
+                         
+                          
+                          <td class="text-center">
+                          <span class="label label-success">Kích Hoạt</span>
+                          </td>
+                          <td class="text-center">
+                            <button type="button" class="btn btn-warning" onClick={() => {showRecordDetails(item) }}>
+                              <span class="fa fa-pencil mr-5"></span>Sửa
+                            </button>
+                            &nbsp;
+                            <button type="button" class="btn btn-danger" onClick={(e) => onDelete(e, parseInt(item.id))}>
+                              Xóa
+                            </button>
+                          </td>
+                          </tr>
+                 );
+               
+              })}
+              
+         
+            
+          </tbody>
+        </table>
+      </div>
+    </div>
+          
         </div>
       </div>
     </div>

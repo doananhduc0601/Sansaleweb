@@ -2,10 +2,7 @@ import React, { Component } from "react";
 import TaskItem from "./TaskItem";
 
 export default function TaskList() {
-  // var { tasks } = this.props; // var tasks = this.props.tasks
-  // var elmTasks = tasks.map((task, index) => {
-  //   return <TaskItem key={task.id} index={index} task={task} />;
-  // });
+ 
   return (
     <div class="row mt-15">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-15">
