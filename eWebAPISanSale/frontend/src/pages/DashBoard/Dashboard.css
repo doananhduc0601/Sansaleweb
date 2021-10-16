@@ -1,4 +1,6 @@
-.container {
-  max-width: 1300px;
-  padding-top: 4.5rem;
+.wrapper {
+  margin-top: 30px;
+}
+.sidebar{
+  margin-top: 30px;
 }
