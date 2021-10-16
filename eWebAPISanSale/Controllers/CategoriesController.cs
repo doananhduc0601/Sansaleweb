@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace eWebAPISanSale.Controllers
 {
-    //[Authorize]
+    
     [Route("api/[controller]")]
     [ApiController]
     public class CategoriesController : ControllerBase
