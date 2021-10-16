@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import TaskForm from "./component_product/TaskForm";
-import Control from "./component_product/Control";
-import TaskList from "./component_product/TaskList";
+import TaskForm from "./component_category/TaskForm1";
+import Control from "./component_category/Control1";
+import TaskList from "./component_category/TaskList1";
 import axios from "axios";
-import { NavItem } from "react-bootstrap";
+// import { NavItem } from "react-bootstrap";
 
-export default function ProductList() {
+export default function CategoryList() {
   const [employeeList, setEmployeeList] = useState([]);
   const [recordForEdit, setRecordForEdit] = useState(null);
 
@@ -13,7 +13,7 @@ export default function ProductList() {
     refreshEmployeeList();
   }, []);
 
-  const employeeAPI = (url = "https://localhost:5001/api/Products/") => {
+  const employeeAPI = (url = "https://localhost:5001/api/Categories/") => {
     return {
       fetchAll: () => axios.get(url),
       create: (newRecord) => axios.post(url, newRecord),
@@ -95,6 +95,7 @@ export default function ProductList() {
   // ) : (
   //   ""
   // );
+
   return (
     <div class="container">
       <div class="text-center">
@@ -129,11 +130,8 @@ export default function ProductList() {
                 <thead>
                   <tr>
                     <th class="text-center">STT</th>
-                    <th class="text-center">Tên</th>
-                    <th class="text-center">Giá gốc </th>
-                    <th class="text-center">Giá bán</th>
-                    <th class="text-center">Lượng truy cập</th>
-                    <th class="text-center">Hàng tồn</th>
+                    <th class="text-center">Tên danh mục</th>
+                    <th class="text-center">Meta Title</th>
                     <th class="text-center">Trạng Thái</th>
                     <th class="text-center">Hành Động</th>
                   </tr>
@@ -143,12 +141,8 @@ export default function ProductList() {
                     return (
                       <tr>
                         <td>{item.id}</td>
-                        <td>{item.name}</td>
-                        <td>{item.promotionPrice}</td>
-                        <td>{item.price}</td>
-                        <td>{item.viewCount}</td>
-                        <td>{item.quantity}</td>
-
+                        <td>{item.nameCategory}</td>
+                        <td>{item.metaTitle}</td>
                         <td class="text-center">
                           <span class="label label-success">
                             {item.status == true ? "true" : "-----"}

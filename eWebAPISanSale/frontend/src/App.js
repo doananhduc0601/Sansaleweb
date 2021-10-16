@@ -10,17 +10,19 @@ import Baiviet from "./pages/HomePage/BaiViet/Baiviet";
 import Homemenu from "./components/menuhome/homemenu";
 import Header from "./components/headerconteact/header";
 import ProductList from "./components/ProductList/ProductList";
+import CategoryList from "./components/CategoryList/CategoryList";
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
           <Header />
-          <Homemenu/>
+          <Homemenu />
 
           <Route path="/" exact component={Home} />
           <Route path="/baiviet" component={Baiviet} />
           <Route path="/productlist" component={ProductList} />
+          <Route path="/categorylist" component={CategoryList} />
           <PublicRoute path="/login" component={Login} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
         </div>

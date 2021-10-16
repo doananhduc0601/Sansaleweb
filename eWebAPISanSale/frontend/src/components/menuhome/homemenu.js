@@ -36,8 +36,8 @@ const menus = [
     exact: true,
   },
   {
-    name: "Quản lý",
-    to: "/productlist",
+    name: "categorylist",
+    to: "/categorylist",
     exact: true,
   },
 ];
