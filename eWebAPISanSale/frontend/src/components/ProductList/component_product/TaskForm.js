@@ -4,31 +4,31 @@ import { AiFillCloseCircle } from "react-icons/ai";
 const defaultImageSrc = "/img/thecao.png";
 
 const initialFieldValues = {
-  id: 0,
-  name: "",
-  code: "",
-  metaTitle: "",
-  description: "",
+  
+  name: "anhduc",
+  code: "123",
+  metaTitle: "anh",
+  description: "a",
   image: "",
-  // moreImages: null,
-  price: "",
-  promotionPrice: "",
-  // includedVat: true,
-  quantity: "",
-  categoryId: "",
-  detail: "",
-  warranty: "",
-  createdDate: "",
-  createdBy: "",
-  modifiedDate: "",
-  modifiedBy: "",
-  metaKeywords: "",
-  //metaDescriptions: "",
-  status: true,
-  //topHot: "",
-  viewCount: "",
-  link: "",
-  //category: null,
+  moreImages: "aa",
+  price: "123",
+  promotionPrice: "123",
+  includedVat: true,
+  quantity: "123",
+  categoryId: "1",
+  detail: "aa",
+  warranty: "12",
+  createdDate: "12/08/2021",
+  createdBy: "d",
+  modifiedDate: "12/08/2021",
+  modifiedBy: "c",
+  metaKeywords: "aaa",
+  metaDescriptions: "aaa",
+  status: "True",
+  topHot: "11",
+  viewCount: "12",
+  link: "aa",
+  // category: null,
   imageSrc: defaultImageSrc,
   imageFile: null,
 };
@@ -117,7 +117,7 @@ export default function TaskForm(props) {
     e.preventDefault();
     if (validate()) {
       const formData = new FormData();
-      formData.append("id", values.id);
+      // formData.append("id", values.id);
       formData.append("name", values.name);
       formData.append("code", values.code);
       formData.append("metaTitle", values.metaTitle);
@@ -133,7 +133,7 @@ export default function TaskForm(props) {
       formData.append("modifiedDate", values.modifiedDate);
       formData.append("modifiedBy", values.modifiedBy);
       formData.append("metaKeywords", values.metaKeywords);
-      formData.append("status", values.status);
+       formData.append("status", values.status);
       formData.append("viewCount", values.viewCount);
       formData.append("link", values.link);
       formData.append("image", values.image);
@@ -143,7 +143,7 @@ export default function TaskForm(props) {
   };
 
   const applyErrorClass = (field) =>
-    field in errors && errors[field] == false ? " invalid-field" : "";
+    ((field in errors && errors[field] == false) ? " invalid-field" : "");
 
   ///////////////////
   return (
@@ -189,14 +189,14 @@ export default function TaskForm(props) {
             />
           </div>
           {/* 3. Thêm data */}
-          <label>ID :</label>
+          {/* <label>ID :</label>
           <input
             class="form-control"
             name="id"
             value={values.id}
             //value={this.state.id}
             onChange={handleInputChange}
-          />
+          /> */}
           <label>tên sản phẩm:</label>
           <input
             type="text"
@@ -254,8 +254,16 @@ export default function TaskForm(props) {
             value={values.quantity}
             onChange={handleInputChange}
           />
+          <label>Category ID:</label>
+          <input
+            type="text"
+            class="form-control"
+            name="categoryId"
+            value={values.categoryId}
+            onChange={handleInputChange}
+          />
 
-          <label>Category ID :</label>
+          {/* <label>Category ID :</label>
           <select
             class="form-control"
             required="required"
@@ -267,7 +275,7 @@ export default function TaskForm(props) {
             <option value={values.categoryId}>2</option>
             <option value={values.categoryId}>3</option>
             <option value={values.categoryId}>4</option>
-          </select>
+          </select> */}
 
           <label>Chi tiết :</label>
           <input
@@ -325,7 +333,7 @@ export default function TaskForm(props) {
             value={values.metaKeywords}
             onChange={handleInputChange}
           />
-          <label>Status:</label>
+          {/* <label>Status:</label>
           <select
             class="form-control"
             required="required"
@@ -335,7 +343,15 @@ export default function TaskForm(props) {
           >
             <option value={true}>True</option>
             <option value={false}>False</option>
-          </select>
+          </select> */}
+          <label>Status :</label>
+          <input
+            type="text"
+            class="form-control"
+            name="status"
+            value={values.status}
+            onChange={handleInputChange}
+          />
           <label>Số lượng đã xem :</label>
           <input
             type="text"
