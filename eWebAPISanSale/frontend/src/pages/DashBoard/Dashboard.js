@@ -1,15 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { getToken, getUser, removeUserSession } from "../../Utils/Common";
-// import Nav from "./Nav";
+import "./Dashboard.css";
 import axios from "axios";
 import { BsShop ,BsFillJournalBookmarkFill,BsCartDashFill} from "react-icons/bs";
 import { MdCategory } from "react-icons/md";
 import { AiFillSetting } from "react-icons/ai";
 import { RiAdminLine } from "react-icons/ri";
-import { Route, Link } from "react-router-dom";
-import "./Dashboard.css";
+import { BrowserRouter,Route, Link } from "react-router-dom";
+import { BsArrowRightCircle,BsArrowDownCircle } from "react-icons/bs";
+import ProductList from "../../components/ProductList/ProductList"
+import Setting from "../../components/Setting/Setting";
 
 function Dashboard(props) {
+  const [isVisible, setIsVisible] = useState(true)
+
   const name = getUser();
   const token = getToken();
 
@@ -52,7 +56,7 @@ function Dashboard(props) {
       },
       {
         name: "Setting Slides",
-        to: "/slides",
+        to: "/setting",
         exact: true,
         icon:<AiFillSetting/>,
       },
@@ -110,13 +114,16 @@ function Dashboard(props) {
     const Toggle = () => {
       this.setState({ toggle: !this.state.toggle });
     };
-
+    
+      
+  
 
   return (
+    <BrowserRouter>
     <div>
    
       <div class="wrapper ">
-    <div class="sidebar" data-color="white" data-active-color="danger">
+    <div class="sidebar" data-color="white" data-active-color="danger" style={{ display: isVisible ? "block" : "none" }}>
       <div class="logo">
         <a href="/" class="simple-text logo-mini">
           <div class="logo-image-small">
@@ -138,25 +145,23 @@ function Dashboard(props) {
         
       </div>
     </div>
-    <div class="main-panel">
+    <div className="main-panel" style={ {width : isVisible? "calc(100% - 260px)" :"100%"}}>
       {/* <!-- Navbar --> */}
       <nav class="navbar navbar-expand-lg navbar-absolute fixed-top navbar-transparent">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <div class="navbar-toggle">
-              <button type="button" class="navbar-toggler">
-                <span class="navbar-toggler-bar bar1"></span>
-                <span class="navbar-toggler-bar bar2"></span>
-                <span class="navbar-toggler-bar bar3"></span>
-              </button>
+            <div class="navbar">
+            <button class="iconmo"  type="button" onClick={() => setIsVisible(false)} style={ {display : isVisible? "block" :"none"}}>
+            <BsArrowDownCircle/>
+            </button>
+            <button class="iconmo" type="button" onClick={() => setIsVisible(true)} style={ {display : isVisible? "none" :"block"}}>
+            <BsArrowRightCircle/>
+            </button>
             </div>
-            <a class="navbar-brand" href="javascript:;">QUẢN LÝ SẢN PHẨM</a>
+            <a class="navbar-brand" href="/"><h5>QUẢN LÝ SẢN PHẨM</h5></a>
           </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-            <span class="navbar-toggler-bar navbar-kebab"></span>
-          </button>
+       
+       
           <div class="collapse navbar-collapse justify-content-end" id="navigation">
             <form>
               <div class="input-group no-border">
@@ -210,7 +215,54 @@ function Dashboard(props) {
       </nav>
       {/* <!-- End Navbar --> */}
       <div class="content">
-       
+    
+          
+      <Route path="/productlist" component={ProductList}/>
+      <Route path="/setting" component={Setting} />
+      <div class="card">
+              <div class="card-header">
+                <h4 class="card-title">Team Members</h4>
+              </div>
+              <div class="card-body">
+                <ul class="list-unstyled team-members">
+                  <li>
+                    <div class="row">
+                      <div class="col-md-2 col-2">
+                        <div class="avatar">
+                          <img src="../assets/img/faces/ayo-ogunseinde-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive"/>
+                        </div>
+                      </div>
+                      <div class="col-md-7 col-7">
+                        Anh Đức
+                        <br />
+                        <span class="text-success"><small>Available</small></span>
+                      </div>
+                      <div class="col-md-3 col-3 text-right">
+                        <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></btn>
+                      </div>
+                    </div>
+                  </li>
+                  <li>
+                    <div class="row">
+                      <div class="col-md-2 col-2">
+                        <div class="avatar">
+                          <img src="../assets/img/faces/joe-gardner-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive"/>
+                        </div>
+                      </div>
+                      <div class="col-md-7 col-7">
+                        Tân
+                        <br />
+                        <span class="text-success"><small>Available</small></span>
+                      </div>
+                      <div class="col-md-3 col-3 text-right">
+                        <btn class="btn btn-sm btn-outline-success btn-round btn-icon"><i class="fa fa-envelope"></i></btn>
+                      </div>
+                    </div>
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
       </div>
       <footer class="footer footer-black  footer-white ">
         <div class="container-fluid">
@@ -235,6 +287,7 @@ function Dashboard(props) {
     </div>
   </div>
     </div>
+    </BrowserRouter>
   );
 }
 export default Dashboard;

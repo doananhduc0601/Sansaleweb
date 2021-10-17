@@ -1,10 +1,8 @@
 import React, { useState, useEffect } from "react";
-import TaskForm from "./component_product/TaskForm";
-import Control from "./component_product/Control";
-import TaskList from "./component_product/TaskList";
 import axios from "axios";
-import { NavItem } from "react-bootstrap";
-
+import { AiOutlineEdit,AiOutlineDelete } from "react-icons/ai";
+import TaskForm from "../CategoryList/component_category/TaskForm1";
+import Setting from "../Setting/Setting";
 export default function ProductList() {
   const [employeeList, setEmployeeList] = useState([]);
   const [recordForEdit, setRecordForEdit] = useState(null);
@@ -57,7 +55,7 @@ export default function ProductList() {
 
   const onDelete = (e, id) => {
     e.stopPropagation();
-    if (window.confirm("Are you sure to delete this record?"))
+    if (alert.confirm("Are you sure to delete this record?"))
       employeeAPI()
         .delete(id)
         .then((res) => refreshEmployeeList())
@@ -96,93 +94,107 @@ export default function ProductList() {
   //   ""
   // );
   return (
+    <>
+    
     <div class="container">
-      <div class="text-center">
-        <h1>Quản Lý Công Việc</h1>
-        <hr />
-      </div>
-      <div class="row">
-        {/* Phần bên trái */}
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <TaskForm addOrEdit={addOrEdit} recordForEdit={recordForEdit} />
-        </div>
-        {/* phần bên phải */}
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-          <button
-            type="button"
-            class="btn btn-primary"
-            //onClick={this.onToggleForm}
-          >
-            <span class="fa fa-plus mr-5"></span>Thêm Công Việc
-          </button>
-          <button
-            type="button"
-            class="btn btn-primary"
-            //onClick={this.onGenerateData}
-          >
-            <span class="fa fa-plus mr-5"></span>Generate
-          </button>
-          <Control />
-          <div class="row mt-15">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-15">
-              <table class="table table-bordered table-hover">
-                <thead>
-                  <tr>
-                    <th class="text-center">STT</th>
-                    <th class="text-center">Tên</th>
-                    <th class="text-center">Giá gốc </th>
-                    <th class="text-center">Giá bán</th>
-                    <th class="text-center">Lượng truy cập</th>
-                    <th class="text-center">Hàng tồn</th>
-                    <th class="text-center">Trạng Thái</th>
-                    <th class="text-center">Hành Động</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {employeeList.map((item) => {
+          
+     
+           
+            
+         <Setting/>
+          <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="card-title"> Product </h4>
+              </div>
+              <div class="card-body">
+                <div class="table-responsive">
+                  <table class="table">
+                    <thead class=" text-primary">
+                      <th>
+                        Id
+                      </th>
+                      <th>
+                        Tên
+                      </th>
+                      <th>
+                        Giá Gốc
+                      </th>
+                      <th>
+                        Giá Bán
+                      </th>
+                      <th>
+                        Lượng Truy Cập
+                      </th>
+                      <th >
+                        Hàng Tồn
+                      </th>
+                      <th >
+                        Hình Ảnh
+                      </th>
+                      <th >
+                        Trạng Thái 
+                      </th>
+                      <th >
+                        Hành Động
+                      </th>
+                    
+                    </thead>
+                    <tbody>
+                    {employeeList.map((item) => {
                     return (
                       <tr>
-                        <td>{item.id}</td>
-                        <td>{item.name}</td>
-                        <td>{item.promotionPrice}</td>
-                        <td>{item.price}</td>
-                        <td>{item.viewCount}</td>
-                        <td>{item.quantity}</td>
+                            <td>{item.id}</td>
+                            <td>{item.name}</td>
+                            <td>{item.promotionPrice}</td>
+                            <td>{item.price}</td>
+                            <td>{item.viewCount}</td>
+                            <td>{item.quantity}</td>
+                            <td className="text-center"> <img
+                                  src={item.imageSrc}
+                                  className="card-img-top"
+                                  style={{ height: 50, width: 50}}
+                                />
+                              </td>
 
-                        <td class="text-center">
-                          <span class="label label-success">
-                            {item.status == true ? "true" : "-----"}
-                          </span>
-                        </td>
-                        <td class="text-center">
-                          <button
-                            type="button"
-                            class="btn btn-warning"
-                            onClick={() => {
-                              showRecordDetails(item);
-                            }}
-                          >
-                            <span class="fa fa-pencil mr-5"></span>Sửa
-                          </button>
-                          &nbsp;
-                          <button
-                            type="button"
-                            class="btn btn-danger"
-                            onClick={(e) => onDelete(e, parseInt(item.id))}
-                          >
-                            Xóa
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
-                </tbody>
-              </table>
+                            <td class="text-center">
+                            <span class="label label-success">
+                                {item.status == true ? "true" : "-----"}
+                            </span>
+                            </td>
+                            <td class="text-center">
+                            <button
+                                type="button"
+                                class="btn btn-warning"
+                                onClick={() => {
+                                showRecordDetails(item);
+                                }}
+                            >
+                                <AiOutlineEdit/>
+                            </button>
+                            &nbsp;
+                            <button
+                                type="button"
+                                class="btn btn-danger"
+                                onClick={(e) => onDelete(e, parseInt(item.id))}
+                            >
+                               <AiOutlineDelete/>
+                            </button>
+                            </td>
+                        </tr>
+                        );
+                    })}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
             </div>
           </div>
+         
         </div>
-      </div>
-    </div>
+        </div>
+    </>
   );
 }
 
