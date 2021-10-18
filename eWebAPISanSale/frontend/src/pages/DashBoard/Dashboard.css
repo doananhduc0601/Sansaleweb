@@ -27,6 +27,7 @@
   left: -20px;
   top: 100px;
   z-index:100;
+  background-color: var(--third-color);
 }
 .active {
   background-color:var(--secondary-color);
@@ -35,4 +36,14 @@
 .active p{
   color: white;
   
+}
+.main-panel{
+  background-color:var(--third-color);
+}
+#info{
+ 
+ float: right;
+  margin-left: 50px;
+  margin-top: 50px;
+
 }
