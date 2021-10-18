@@ -44,31 +44,31 @@ function Dashboard(props) {
       },
       {
         name: "Product",
-        to: "/productlist",
+        to: "/dashboard/productlist",
         exact: true,
         icon:<BsShop/>,
       },
       {
         name: "Category",
-        to: "/category",
+        to: "/dashboard/category",
         exact: true,
         icon:<MdCategory/>,
       },
       {
         name: "Setting Slides",
-        to: "/setting",
+        to: "/dashboard/setting",
         exact: true,
         icon:<AiFillSetting/>,
       },
       {
         name: "Admin",
-        to: "/admin",
+        to: "/dashboard/admin",
         exact: true,
         icon:<RiAdminLine/>,
       },
       {
         name: "Bài Viết ",
-        to: "/info",
+        to: "/dashboard/info",
         exact: true,
         icon:<BsFillJournalBookmarkFill/>,
       },
@@ -125,13 +125,13 @@ function Dashboard(props) {
       <div class="wrapper ">
     <div class="sidebar" data-color="white" data-active-color="danger" style={{ display: isVisible ? "block" : "none" }}>
       <div class="logo">
-        <a href="/" class="simple-text logo-mini">
+        <a href="/dashboard" class="simple-text logo-mini">
           <div class="logo-image-small">
             <img src="../assets/img/logo-small.png"/>
           </div>
      
         </a>
-        <a href="/" class="simple-text logo-normal">
+        <a href="/dashboard" class="simple-text logo-normal">
           {name}
        
         </a>
@@ -217,9 +217,9 @@ function Dashboard(props) {
       <div class="content">
     
           
-      <Route path="/productlist" component={ProductList}/>
-      <Route path="/setting" component={Setting} />
-      <div class="card">
+      <Route path="/dashboard/productlist" component={ProductList}/>
+      <Route path="/dashboard/setting" component={Setting} />
+      <div class="card col-md-3 align-items-center  " id="info">
               <div class="card-header">
                 <h4 class="card-title">Team Members</h4>
               </div>
@@ -229,7 +229,7 @@ function Dashboard(props) {
                     <div class="row">
                       <div class="col-md-2 col-2">
                         <div class="avatar">
-                          <img src="../assets/img/faces/ayo-ogunseinde-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive"/>
+                          <img src="../assets/img/faces/anhduc.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive"/>
                         </div>
                       </div>
                       <div class="col-md-7 col-7">
@@ -264,7 +264,7 @@ function Dashboard(props) {
               </div>
             </div>
       </div>
-      <footer class="footer footer-black  footer-white ">
+      <footer class="footer footer-black  footer-white col-md-12">
         <div class="container-fluid">
           <div class="row">
             <nav class="footer-nav">

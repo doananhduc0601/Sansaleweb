@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { AiOutlineEdit,AiOutlineDelete } from "react-icons/ai";
-import TaskForm from "../CategoryList/component_category/TaskForm1";
-import Setting from "../Setting/Setting";
+import TaskForm from "../ProductList/component_product/TaskForm";
+
 export default function ProductList() {
   const [employeeList, setEmployeeList] = useState([]);
   const [recordForEdit, setRecordForEdit] = useState(null);
-
+ 
+ 
   useEffect(() => {
     refreshEmployeeList();
   }, []);
@@ -37,62 +38,41 @@ export default function ProductList() {
         .then((res) => {
           onSuccess();
           refreshEmployeeList();
+          window.confirm("Bạn đã Thêm thành công");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          window.confirm("Bạn đã Thêm thất bại");
+        });
     else
       employeeAPI()
         .update(formData.get("id"), formData)
         .then((res) => {
           onSuccess();
           refreshEmployeeList();
+          window.confirm("Bạn đã update thành công");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          window.confirm("Mời bạn nhập lại");
+        });
   };
 
   const showRecordDetails = (data) => {
     setRecordForEdit(data);
   };
+ 
 
   const onDelete = (e, id) => {
     e.stopPropagation();
-    if (alert.confirm("Are you sure to delete this record?"))
+    if (window.confirm("Are you sure to delete this record?"))
       employeeAPI()
         .delete(id)
         .then((res) => refreshEmployeeList())
         .catch((err) => console.log(err));
   };
+  
 
-  /////////////////////// I. Thành phần cũ /////
-  // constructor(props) {
-  //   super(props);
-  //   this.state = { tasks: [], isDisplayForm: false };
-  // }
-
-  //  1. tạo mảng và lưu giá trị vào, sau đó hiển thị
-  // onGenerateData = () => {
-  //   var tasks = [
-  //     { id: 2, name: "a", status: true },
-  //     { id: 4, name: "b", status: false },
-  //     { id: 1, name: "c", status: true },
-  //   ];
-  //   this.setState({ tasks: tasks });
-  //   localStorage.setItem("tasks", JSON.stringify(tasks));
-  // };
-
-  // 2. chuyển đổi button "Thêm" thành true/false
-  // const onToggleForm = () => {
-  //   this.setState({ isDisplayForm: true });
-  // };
-
-  // onCloseForm = () => {
-  //   this.setState({ isDisplayForm: false });
-  // };
-  // var { tasks, isDisplayForm } = this.state;
-  // var elmTaskForm = isDisplayForm ? (
-  //   <TaskForm onCloseForm={this.onCloseForm} />
-  // ) : (
-  //   ""
-  // );
   return (
     <>
     
@@ -101,7 +81,8 @@ export default function ProductList() {
      
            
             
-         <Setting/>
+      <TaskForm addOrEdit={addOrEdit} recordForEdit={recordForEdit} />
+
           <div class="row">
           <div class="col-md-12">
             <div class="card">
@@ -151,6 +132,7 @@ export default function ProductList() {
                             <td>{item.price}</td>
                             <td>{item.viewCount}</td>
                             <td>{item.quantity}</td>
+                            
                             <td className="text-center"> <img
                                   src={item.imageSrc}
                                   className="card-img-top"
@@ -159,8 +141,9 @@ export default function ProductList() {
                               </td>
 
                             <td class="text-center">
-                            <span class="label label-success">
-                                {item.status == true ? "true" : "-----"}
+                            
+                            <span className={item.status == true ?"label label-success" : "label label-warning"}>
+                                {item.status == true ? "Còn" : "Hết"}
                             </span>
                             </td>
                             <td class="text-center">

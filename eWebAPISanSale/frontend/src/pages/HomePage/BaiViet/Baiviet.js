@@ -7,7 +7,7 @@ class Baiviet extends Component{
             <div>
                
                
-           <h1>Bai viet</h1>
+          
            </div>
         );
     }
