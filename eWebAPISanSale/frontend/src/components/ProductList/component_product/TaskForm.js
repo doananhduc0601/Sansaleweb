@@ -35,29 +35,10 @@ const initialFieldValues = {
   imageFile: null,
 };
 export default function TaskFrom(props) {
-  const [isVisible, setIsVisible] = useState(false);
-  ////////////////////////////////// Thêm dữ liệu //////////////////////////////////
-  const onChange = (event) => {
-    var target = event.target;
-    var id = target.id;
-    var name = target.name;
-    var value = target.value;
-    this.state({
-      [name]: value,
-      // [id]: value,
-    });
-  };
-  ////////////////////////////////// sự kiện submit //////////////////////////////////
-  const onSubmit = () => {
-    console.log(this.state);
-  };
-  ////////////////////////////////// render //////////////////////////////////
-
-  /////////////////// II. thêm thành phần IMAGE
   const { addOrEdit, recordForEdit } = props;
-
   const [values, setValues] = useState(initialFieldValues);
   const [errors, setErrors] = useState({});
+  const { isVisible, setIsVisible } = props;
 
   useEffect(() => {
     if (recordForEdit != null) setValues(recordForEdit);
@@ -314,10 +295,10 @@ export default function TaskFrom(props) {
                         value={values.categoryId}
                         onChange={handleInputChange}
                       >
-                        <option value="1">1 . Thiết Bị Điển Tử</option>
-                        <option value="2">2 . Quẩn Áo </option>
-                        <option value="3">3 . Food</option>
-                        <option value="4">4 . Nội Thất</option>
+                        <option value={1}>1 . Thiết Bị Điển Tử</option>
+                        <option value={2}>2 . Quẩn Áo </option>
+                        <option value={3}>3 . Food</option>
+                        <option value={4}>4 . Nội Thất</option>
                       </select>
                     </div>
                   </div>
@@ -387,17 +368,21 @@ export default function TaskFrom(props) {
                   <div class="col-md-4 pl-1">
                     <div class="form-group">
                       <label>Trạng Thái </label>
-                      <input
+                      <select
                         type=""
                         class="form-control"
                         placeholder="true"
                         name="status"
                         value={values.status}
                         onChange={handleInputChange}
-                      />
+                      >
+                        <option value="True">True</option>
+                        <option value="False">False</option>
+                      </select>
                     </div>
                   </div>
                 </div>
+
                 <div class="row">
                   <div class="col-md-12">
                     <div class="form-group">

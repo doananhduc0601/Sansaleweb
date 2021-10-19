@@ -1,14 +1,8 @@
 import React, { Component } from "react";
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 
-export default function TaskHienThi(props) {
-  const showRecordDetails = () => {
-    props.showRecordDetails();
-  };
-  const onDelete = () => {
-    props.onDelete();
-  };
-
+export default function TaskList(props) {
+  const { isVisible, setIsVisible } = props;
   return (
     <div class="row">
       <div class="col-md-12">
@@ -65,7 +59,8 @@ export default function TaskHienThi(props) {
                             type="button"
                             class="btn btn-warning"
                             onClick={() => {
-                              showRecordDetails(item);
+                              props.showRecordDetails(item);
+                              props.setIsVisible(true);
                             }}
                           >
                             <AiOutlineEdit />
@@ -74,7 +69,9 @@ export default function TaskHienThi(props) {
                           <button
                             type="button"
                             class="btn btn-danger"
-                            onClick={(e) => onDelete(e, parseInt(item.id))}
+                            onClick={(e) =>
+                              props.onDelete(e, parseInt(item.id))
+                            }
                           >
                             <AiOutlineDelete />
                           </button>

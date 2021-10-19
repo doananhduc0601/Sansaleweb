@@ -70,15 +70,24 @@ export default function ProductList() {
         .catch((err) => console.log(err));
   };
 
+  const [isVisible, setIsVisible] = useState(false);
+
   return (
     <>
       <div class="container">
-        <TaskForm addOrEdit={addOrEdit} recordForEdit={recordForEdit} />
+        <TaskForm
+          addOrEdit={addOrEdit}
+          recordForEdit={recordForEdit}
+          isVisible={isVisible}
+          setIsVisible={setIsVisible}
+        />
 
         <TaskList
           showRecordDetails={showRecordDetails}
           onDelete={onDelete}
           employeeList={employeeList}
+          setIsVisible={setIsVisible}
+          isVisible={isVisible}
         />
       </div>
     </>
