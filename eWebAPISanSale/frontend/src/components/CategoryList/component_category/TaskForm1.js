@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { AiFillCloseCircle } from "react-icons/ai";
+// import { AiFillCloseCircle } from "react-icons/ai";
+import { RiAddCircleLine } from "react-icons/ri";
+import { AiOutlineCloseCircle } from "react-icons/ai";
 
 // const defaultImageSrc = "/img/thecao.png";
 
@@ -21,9 +23,9 @@ export default function TaskForm(props) {
   //   this.state = { id: "11", name: "22", status: false };
   // }
   ////////////////////////////////// Đóng thành phần bên trái //////////////////////////////////
-  const onCloseForm = () => {
-    this.props.onCloseForm();
-  };
+  // const onCloseForm = () => {
+  //  props.onCloseForm();
+  // };
   ////////////////////////////////// Thêm dữ liệu //////////////////////////////////
   // const onChange = (event) => {
   //   var target = event.target;
@@ -46,6 +48,7 @@ export default function TaskForm(props) {
 
   const [values, setValues] = useState(initialFieldValues);
   const [errors, setErrors] = useState({});
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     if (recordForEdit != null) setValues(recordForEdit);
@@ -112,65 +115,98 @@ export default function TaskForm(props) {
 
   ///////////////////
   return (
-    <div class="panel panel-warning">
-      {/* 0. */}
-      <div class="panel-heading">
-        <h3 class="panel-title">
-          Thêm Công Việc------------
-          <AiFillCloseCircle
-            style={{ color: "red", fontSize: "1.7em" }}
-            onClick={onCloseForm}
-            text-align="center"
-          />
-        </h3>
-      </div>
+    <>
+      <button
+        class="iconmofrom btn-primary"
+        type="button"
+        onClick={() => setIsVisible(false)}
+        style={{ display: isVisible ? "block" : "none" }}
+      >
+        <AiOutlineCloseCircle />
+      </button>
+      <button
+        class="iconmofrom btn-primary"
+        type="button"
+        onClick={() => setIsVisible(true)}
+        style={{ display: isVisible ? "none" : "block" }}
+      >
+        <RiAddCircleLine />
+      </button>
+      <div class="row" style={{ display: isVisible ? "block" : "none" }}>
+        <div class="col-md-12">
+          <div class="card card-user">
+            <div class="card-header">
+              <h5 class="card-title">Edit Product</h5>
+            </div>
+            <div class="card-body">
+              <form autoComplete="off" noValidate onSubmit={handleFormSubmit}>
+                <div class="row">
+                  <div class="col-md-4 pr-1">
+                    <div class="form-group">
+                      <label>Id</label>
+                      <input
+                        class="form-control"
+                        placeholder="id"
+                        name="id"
+                        value={values.id}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                  <div class="col-md-8 pl-1">
+                    <div class="form-group">
+                      <label>Tên danh mục</label>
+                      <input
+                        class={"form-control" + applyErrorClass("name")}
+                        placeholder="Tên sản phẩm"
+                        name="name"
+                        value={values.name}
+                        onChange={handleInputChange}
+                      />
+                    </div>
+                  </div>
+                
 
-      <div class="panel-body">
-        {/* chuyền submit vào */}
-        <form autoComplete="off" noValidate onSubmit={handleFormSubmit}>
-          <label>ID :</label>
-          <input
-            class="form-control"
-            name="id"
-            value={values.id}
-            onChange={handleInputChange}
-          />
-          <label>tên sản phẩm:</label>
-          <input
-            type="text"
-            class="form-control"
-            name="nameCategory"
-            value={values.nameCategory}
-            onChange={handleInputChange}
-          />
-          <label>Status:</label>
-          <select
-            class="form-control"
-            required="required"
-            name="status"
-            value={values.status}
-            onChange={handleInputChange}
-          >
-            <option value="True">True</option>
-            <option value="False">False</option>
-          </select>
-          <label>Meta Title:</label>
-          <input
-            type="text"
-            class={"form-control" + applyErrorClass("metaTitle")}
-            name="metaTitle"
-            value={values.metaTitle}
-            onChange={handleInputChange}
-          />
-          <br />
-          <div class="text-center">
-            <button type="submit" class="btn btn-warning">
-              Thêm
-            </button>
+                <div class="col-md-4 pr-1">
+                  <div class="form-group">
+                    <label>Trạng Thái </label>
+                    <input
+                      type=""
+                      class="form-control"
+                      placeholder="true"
+                      name="status"
+                      value={values.status}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                <div class="col-md-8 pl-1">
+                  <div class="form-group">
+                    <label>Tên danh mục</label>
+                    <input
+                      class={"form-control" + applyErrorClass("name")}
+                      placeholder="Tên sản phẩm"
+                      name="name"
+                      value={values.name}
+                      onChange={handleInputChange}
+                    />
+                  </div>
+                </div>
+                </div>
+                <div class="row">
+                  <div class="update ml-auto mr-auto">
+                    <button type="submit" class="btn btn-primary btn-round">
+                      ADD/UPDATE
+                    </button>
+                  </div>
+                </div>
+                
+              </form>
+            </div>
           </div>
-        </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 
