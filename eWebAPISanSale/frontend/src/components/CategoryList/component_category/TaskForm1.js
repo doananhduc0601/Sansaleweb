@@ -22,7 +22,7 @@ export default function TaskForm(props) {
   // }
   ////////////////////////////////// Đóng thành phần bên trái //////////////////////////////////
   const onCloseForm = () => {
-    this.props.onCloseForm();
+    props.onCloseForm();
   };
   ////////////////////////////////// Thêm dữ liệu //////////////////////////////////
   // const onChange = (event) => {
@@ -46,6 +46,7 @@ export default function TaskForm(props) {
 
   const [values, setValues] = useState(initialFieldValues);
   const [errors, setErrors] = useState({});
+  // const [isVisible, setIsVisible] = props;
 
   useEffect(() => {
     if (recordForEdit != null) setValues(recordForEdit);
@@ -118,8 +119,8 @@ export default function TaskForm(props) {
         <h3 class="panel-title">
           Thêm Công Việc------------
           <AiFillCloseCircle
-            style={{ color: "red", fontSize: "1.7em" }}
             onClick={onCloseForm}
+            style={{ color: "red", fontSize: "1.7em" }}
             text-align="center"
           />
         </h3>

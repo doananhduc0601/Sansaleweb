@@ -15,7 +15,7 @@ class Home extends Component {
         <Slides />
         <Categorymenu />
         <Dealsock />
-        <EmployeeList/>
+        <EmployeeList />
       </div>
     );
   }

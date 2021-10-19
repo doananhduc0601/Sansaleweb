@@ -8,6 +8,7 @@ import axios from "axios";
 export default function CategoryList() {
   const [employeeList, setEmployeeList] = useState([]);
   const [recordForEdit, setRecordForEdit] = useState(null);
+  const [isDisplay, setIsDisplay] = useState(false);
 
   useEffect(() => {
     refreshEmployeeList();
@@ -82,9 +83,6 @@ export default function CategoryList() {
   // };
 
   // 2. chuyển đổi button "Thêm" thành true/false
-  // const onToggleForm = () => {
-  //   this.setState({ isDisplayForm: true });
-  // };
 
   // onCloseForm = () => {
   //   this.setState({ isDisplayForm: false });
@@ -96,6 +94,23 @@ export default function CategoryList() {
   //   ""
   // );
 
+  const ontoggle = () => {
+    setIsDisplay(true);
+  };
+
+  const onCloseForm = () => {
+    setIsDisplay(false);
+  };
+  const elmTaskForm = isDisplay ? (
+    <TaskForm
+      addOrEdit={addOrEdit}
+      recordForEdit={recordForEdit}
+      // setIsVisible={setIsVisible}
+      onCloseForm={onCloseForm}
+    />
+  ) : (
+    ""
+  );
   return (
     <div class="container">
       <div class="text-center">
@@ -104,16 +119,19 @@ export default function CategoryList() {
       </div>
       <div class="row">
         {/* Phần bên trái */}
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-          <TaskForm addOrEdit={addOrEdit} recordForEdit={recordForEdit} />
+        <div class={isDisplay ? "col-xs-4 col-sm-4 col-md-4 col-lg-4" : ""}>
+          {/* <TaskForm addOrEdit={addOrEdit} recordForEdit={recordForEdit} /> */}
+          {elmTaskForm}
         </div>
         {/* phần bên phải */}
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
-          <button
-            type="button"
-            class="btn btn-primary"
-            //onClick={this.onToggleForm}
-          >
+        <div
+          class={
+            isDisplay
+              ? "col-xs-8 col-sm-8 col-md-8 col-lg-8"
+              : "col-xs-12 col-sm-12 col-md-12 col-lg-12"
+          }
+        >
+          <button type="button" class="btn btn-primary" onClick={ontoggle}>
             <span class="fa fa-plus mr-5"></span>Thêm Công Việc
           </button>
           <button
