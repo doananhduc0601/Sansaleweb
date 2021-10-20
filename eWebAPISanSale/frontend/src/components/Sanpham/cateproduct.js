@@ -16,9 +16,7 @@ export default function Cateproduct() {
     const employeeAPI = (url = "https://localhost:5001/api/Products") => {
       return {
         fetchAll: () => axios.get(url),
-        create: (newRecord) => axios.post(url, newRecord),
-        update: (id, updatedRecord) => axios.put(url + id, updatedRecord),
-        delete: (id) => axios.delete(url + id),
+
       };
     };
   
@@ -40,9 +38,9 @@ export default function Cateproduct() {
                   <div className="home-filter">
                   <span className="home-filler_label"> Sắp xếp theo</span> 
                   
-                  <button class="home-filler_btn btn btn-primary ">Phổ Biến</button>
-                  <button class="home-filler_btn btn ">Mới Nhất</button>
-                  <button class="home-filler_btn btn ">Bán Chạy</button>
+                  <button class="home-filler_btn btn-cate btn-primary ">Phổ Biến</button>
+                  <button class="home-filler_btn btn-cate ">Mới Nhất</button>
+                  <button class="home-filler_btn btn-cate ">Bán Chạy</button>
                   <select type="text" class="select-input"  name="categoryId"
                   
                       >
@@ -69,17 +67,19 @@ export default function Cateproduct() {
                   <div className="home-product">
                       {/* grid ->row -Column */}
                       <div className="grid_row">
-                        <div className="gird__column-2">
+                      {employeeList.map((item) => {
+                        return(
+                          <div className="gird__column-2">
                           {/* product item */}
-                          <div className="home-product-item">
+                          <a className="home-product-item" href={item.link}>
                             <div className="home-product-item-img">
-                              <img src="./assets/img/faces/dan.jpg"></img>
+                              <img src={item.imageSrc}></img>
                               
                             </div>
-                                <h4 className="home-product-item__name">Đàn Ukulele đánh siêu hay chỉ có tại đây </h4>
+                                <h4 className="home-product-item__name">{item.name} </h4>
                                  <div className="home-product-item__price">
-                                   <span className="home-product-item__price-old">1.200.000đ</span>
-                                   <span className="home-product-item__price-new">1.100.000đ</span>
+                                   <span className="home-product-item__price-old">{item.promotionPrice}.000</span>
+                                   <span className="home-product-item__price-new">{item.price}.000</span>
 
                                  </div>
                                  <div className="home-product-item__action">
@@ -87,254 +87,25 @@ export default function Cateproduct() {
                                      <i><AiOutlineHeart/></i>
                                    </span>
                                    <span className="home-product-item__sub">
-                                     <i>Đã bán</i>
+                                     <i>Đã bán{item.quantity}</i>
                                    </span>
                                  </div>
                                  <div className="home-product-item__origin">
                                    <span className="home-product-item__brand">Whoo</span>
-                                   <span className="home-product-item__origin-name">Nhật Bản</span>
+                                   <a href="" className="home-product-item__origin-btn btn-primary"><p>Mua ngay</p></a>
                                  </div>
                                  {/* <div className="home-product-item__favourite">
                                     Yêu thích
                                  </div> */}
                                  <div className="home-product-item__saleoff">
-                                    <span className="home-product-item__saleoff-percent">10%</span>
+                                    <span className="home-product-item__saleoff-percent">{item.detail}</span>
                                     <span className="home-product-item__saleoff-label">GIẢM</span>
                                  </div>
 
-                          </div>
-                     
-                          
-                          
+                          </a>
                         </div>
-                        <div className="gird__column-2">
-                          {/* product item */}
-                          <div className="home-product-item">
-                            <div className="home-product-item-img">
-                              <img src="./assets/img/faces/dan.jpg"></img>
-                              
-                            </div>
-                                <h4 className="home-product-item__name">Đàn Ukulele đánh siêu hay chỉ có tại đây </h4>
-                                 <div className="home-product-item__price">
-                                   <span className="home-product-item__price-old">1.200.000đ</span>
-                                   <span className="home-product-item__price-new">1.100.000đ</span>
-
-                                 </div>
-                                 <div className="home-product-item__action">
-                                   <span className="home-product-item__like">
-                                     <i><AiOutlineHeart/></i>
-                                   </span>
-                                   <span className="home-product-item__sub">
-                                     <i>Đã bán</i>
-                                   </span>
-                                 </div>
-                                 <div className="home-product-item__origin">
-                                   <span className="home-product-item__brand">Whoo</span>
-                                   <span className="home-product-item__origin-name">Nhật Bản</span>
-                                 </div>
-                                 {/* <div className="home-product-item__favourite">
-                                    Yêu thích
-                                 </div> */}
-                                 <div className="home-product-item__saleoff">
-                                    <span className="home-product-item__saleoff-percent">10%</span>
-                                    <span className="home-product-item__saleoff-label">GIẢM</span>
-                                 </div>
-
-                          </div>
-                     
-                          
-                          
-                        </div>
-                        <div className="gird__column-2">
-                          {/* product item */}
-                          <div className="home-product-item">
-                            <div className="home-product-item-img">
-                              <img src="./assets/img/faces/dan.jpg"></img>
-                              
-                            </div>
-                                <h4 className="home-product-item__name">Đàn Ukulele đánh siêu hay chỉ có tại đây </h4>
-                                 <div className="home-product-item__price">
-                                   <span className="home-product-item__price-old">1.200.000đ</span>
-                                   <span className="home-product-item__price-new">1.100.000đ</span>
-
-                                 </div>
-                                 <div className="home-product-item__action">
-                                   <span className="home-product-item__like">
-                                     <i><AiOutlineHeart/></i>
-                                   </span>
-                                   <span className="home-product-item__sub">
-                                     <i>Đã bán</i>
-                                   </span>
-                                 </div>
-                                 <div className="home-product-item__origin">
-                                   <span className="home-product-item__brand">Whoo</span>
-                                   <span className="home-product-item__origin-name">Nhật Bản</span>
-                                 </div>
-                                 {/* <div className="home-product-item__favourite">
-                                    Yêu thích
-                                 </div> */}
-                                 <div className="home-product-item__saleoff">
-                                    <span className="home-product-item__saleoff-percent">10%</span>
-                                    <span className="home-product-item__saleoff-label">GIẢM</span>
-                                 </div>
-
-                          </div>
-                     
-                          
-                          
-                        </div>
-                        <div className="gird__column-2">
-                          {/* product item */}
-                          <div className="home-product-item">
-                            <div className="home-product-item-img">
-                              <img src="./assets/img/faces/dan.jpg"></img>
-                              
-                            </div>
-                                <h4 className="home-product-item__name">Đàn Ukulele đánh siêu hay chỉ có tại đây </h4>
-                                 <div className="home-product-item__price">
-                                   <span className="home-product-item__price-old">1.200.000đ</span>
-                                   <span className="home-product-item__price-new">1.100.000đ</span>
-
-                                 </div>
-                                 <div className="home-product-item__action">
-                                   <span className="home-product-item__like">
-                                     <i><AiOutlineHeart/></i>
-                                   </span>
-                                   <span className="home-product-item__sub">
-                                     <i>Đã bán</i>
-                                   </span>
-                                 </div>
-                                 <div className="home-product-item__origin">
-                                   <span className="home-product-item__brand">Whoo</span>
-                                   <span className="home-product-item__origin-name">Nhật Bản</span>
-                                 </div>
-                                 {/* <div className="home-product-item__favourite">
-                                    Yêu thích
-                                 </div> */}
-                                 <div className="home-product-item__saleoff">
-                                    <span className="home-product-item__saleoff-percent">10%</span>
-                                    <span className="home-product-item__saleoff-label">GIẢM</span>
-                                 </div>
-
-                          </div>
-                     
-                          
-                          
-                        </div>
-                        <div className="gird__column-2">
-                          {/* product item */}
-                          <div className="home-product-item">
-                            <div className="home-product-item-img">
-                              <img src="./assets/img/faces/dan.jpg"></img>
-                              
-                            </div>
-                                <h4 className="home-product-item__name">Đàn Ukulele đánh siêu hay chỉ có tại đây </h4>
-                                 <div className="home-product-item__price">
-                                   <span className="home-product-item__price-old">1.200.000đ</span>
-                                   <span className="home-product-item__price-new">1.100.000đ</span>
-
-                                 </div>
-                                 <div className="home-product-item__action">
-                                   <span className="home-product-item__like">
-                                     <i><AiOutlineHeart/></i>
-                                   </span>
-                                   <span className="home-product-item__sub">
-                                     <i>Đã bán</i>
-                                   </span>
-                                 </div>
-                                 <div className="home-product-item__origin">
-                                   <span className="home-product-item__brand">Whoo</span>
-                                   <span className="home-product-item__origin-name">Nhật Bản</span>
-                                 </div>
-                                 {/* <div className="home-product-item__favourite">
-                                    Yêu thích
-                                 </div> */}
-                                 <div className="home-product-item__saleoff">
-                                    <span className="home-product-item__saleoff-percent">10%</span>
-                                    <span className="home-product-item__saleoff-label">GIẢM</span>
-                                 </div>
-
-                          </div>
-                     
-                          
-                          
-                        </div>
-                        <div className="gird__column-2">
-                          {/* product item */}
-                          <div className="home-product-item">
-                            <div className="home-product-item-img">
-                              <img src="./assets/img/faces/dan.jpg"></img>
-                              
-                            </div>
-                                <h4 className="home-product-item__name">Đàn Ukulele đánh siêu hay chỉ có tại đây </h4>
-                                 <div className="home-product-item__price">
-                                   <span className="home-product-item__price-old">1.200.000đ</span>
-                                   <span className="home-product-item__price-new">1.100.000đ</span>
-
-                                 </div>
-                                 <div className="home-product-item__action">
-                                   <span className="home-product-item__like">
-                                     <i><AiOutlineHeart/></i>
-                                   </span>
-                                   <span className="home-product-item__sub">
-                                     <i>Đã bán</i>
-                                   </span>
-                                 </div>
-                                 <div className="home-product-item__origin">
-                                   <span className="home-product-item__brand">Whoo</span>
-                                   <span className="home-product-item__origin-name">Nhật Bản</span>
-                                 </div>
-                                 {/* <div className="home-product-item__favourite">
-                                    Yêu thích
-                                 </div> */}
-                                 <div className="home-product-item__saleoff">
-                                    <span className="home-product-item__saleoff-percent">10%</span>
-                                    <span className="home-product-item__saleoff-label">GIẢM</span>
-                                 </div>
-
-                          </div>
-                     
-                          
-                          
-                        </div>
-                        <div className="gird__column-2">
-                          {/* product item */}
-                          <div className="home-product-item">
-                            <div className="home-product-item-img">
-                              <img src="./assets/img/faces/dan.jpg"></img>
-                              
-                            </div>
-                                <h4 className="home-product-item__name">Đàn Ukulele đánh siêu hay chỉ có tại đây </h4>
-                                 <div className="home-product-item__price">
-                                   <span className="home-product-item__price-old">1.200.000đ</span>
-                                   <span className="home-product-item__price-new">1.100.000đ</span>
-
-                                 </div>
-                                 <div className="home-product-item__action">
-                                   <span className="home-product-item__like">
-                                     <i><AiOutlineHeart/></i>
-                                   </span>
-                                   <span className="home-product-item__sub">
-                                     <i>Đã bán</i>
-                                   </span>
-                                 </div>
-                                 <div className="home-product-item__origin">
-                                   <span className="home-product-item__brand">Whoo</span>
-                                   <span className="home-product-item__origin-name">Nhật Bản</span>
-                                 </div>
-                                 {/* <div className="home-product-item__favourite">
-                                    Yêu thích
-                                 </div> */}
-                                 <div className="home-product-item__saleoff">
-                                    <span className="home-product-item__saleoff-percent">10%</span>
-                                    <span className="home-product-item__saleoff-label">GIẢM</span>
-                                 </div>
-
-                          </div>
-                     
-                          
-                          
-                        </div>
+                        );
+                      })} 
                         
                       </div>
                   </div>

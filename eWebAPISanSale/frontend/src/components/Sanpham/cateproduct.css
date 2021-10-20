@@ -30,7 +30,7 @@
 .gird__column-2{
     padding-left: 12px;
     padding-right: 12px;
-    width: 16.6667%;
+    width: calc(100% / 6);
 }
 .grid{
   
@@ -43,7 +43,7 @@
 
 }
 /* buttom */
-.btn{
+.btn-cate{
     min-width: 124px;
     height: 34px;
     text-decoration: none;
@@ -58,6 +58,10 @@
     align-items: center;
     justify-content: center;
     line-height: 1.6rem;
+    background-color: var(--third-color);
+}
+.btn:active{
+    background-color: var(--secondary-color);
 }
 /* home-filter */
 .home-filter{
@@ -120,7 +124,7 @@
     height: 36px;
 }
 .home-filler__page-btn{
-   flex:1;
+    flex:1;
     display: flex;
     background-color: white;
     text-decoration: none;
@@ -154,15 +158,23 @@
     background-color: white;
 }
 .home-product-item{
+    display: block;
     border: 1px solid rgb(34, 101, 151); ;
     margin-top: 10px;
     position: relative;
+    border-bottom-left-radius:2px ;
+    border-bottom-right-radius:2px ;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
+    transition: transfrom linear 0.1s;
+    will-change: transfrom;
+    color: black;
 }
 .home-product-item:hover{
+    text-decoration: none;
+
     cursor: pointer;
-  transform: scale(1.02);
-  box-shadow: 0 0 10px #333;
-  z-index: 3;
+     transform: translateY(-1px);
+     box-shadow: 0 1px 20px 0 rgba(0, 0, 0, 0.5);
 }
 .home-product-item-img{
     width:100%;
@@ -224,6 +236,34 @@
     margin: 0px 10px 10px 10px;
     justify-content: space-between;
 }
+.home-product-item__origin-btn{
+    
+        min-width: 60px;
+        height: 20px;
+        border-radius:2px;
+        outline: none;
+        cursor: pointer;
+        text-decoration: none;
+        background-color: var(--secondary-color)!important;
+
+  }
+  .home-product-item__origin-btn:hover{
+    
+    color: #FFD700!important;
+    text-decoration: none;
+    background-color: var(--primary-color)!important;
+}
+.home-product-item__origin-btn p{
+    margin: 2px;
+    font-size: 1.3rem;
+    
+    line-height: 1.3rem;
+    font-weight: 600;
+    
+   
+}
+
+
 .home-product-item__brand{
     font-size: 1.2rem;
 }
@@ -279,4 +319,22 @@ line-height: 1.3rem;
 position: relative;
 font-weight: 600;
    
+}
+
+@media (max-width: 1024px)  {
+    .gird__column-2{
+        padding-left: 12px;
+        padding-right: 12px;
+        width: calc(100% / 4);
+    }
+    
+}
+@media (max-width: 740px) {
+    .gird__column-2{
+        padding-left: 12px;
+        padding-right: 12px;
+        width: 50%;
+        
+    }
+    
 }
