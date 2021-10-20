@@ -23,7 +23,7 @@ namespace eWebAPISanSale.Models
         public string ModifiedBy { get; set; }
         public string MetaKeywords { get; set; }
         public string MetaDescriptions { get; set; }
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
         public DateTime? TopHot { get; set; }
         public int? ViewCount { get; set; }
         public string Tags { get; set; }

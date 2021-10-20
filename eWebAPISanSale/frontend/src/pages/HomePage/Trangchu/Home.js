@@ -6,6 +6,7 @@ import Dealsock from "../../../components/dealsock/dealsock";
 import EmployeeList from "../../../components/productimage/EmployeeList";
 import Homemenu from "../../../components/menuhome/homemenu";
 import Header from "../../../components/headerconteact/header";
+import Cateproduct from "../../../components/Sanpham/cateproduct";
 class Home extends Component {
   render() {
     return (
@@ -15,7 +16,7 @@ class Home extends Component {
         <Slides />
         <Categorymenu />
         <Dealsock />
-        <EmployeeList/>
+        <Cateproduct/>
       </div>
     );
   }

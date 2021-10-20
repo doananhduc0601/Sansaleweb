@@ -21,6 +21,7 @@ namespace eWebAPISanSale.Models
         public DateTime? ModifiedDate { get; set; }
         public string ModifiedBy { get; set; }
         public bool? Status { get; set; }
+
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 
