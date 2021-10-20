@@ -6,8 +6,7 @@ class Baiviet extends Component{
         return (
             <div>
                
-               
-          
+               <h1>Baivai</h1>
            </div>
         );
     }

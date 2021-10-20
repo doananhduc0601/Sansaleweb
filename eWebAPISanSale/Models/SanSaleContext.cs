@@ -46,7 +46,7 @@ namespace eWebAPISanSale.Models
             {
                 entity.ToTable("Admin");
 
-                entity.Property(e => e.Id).HasColumnName("ID");
+                entity.Property(e => e.Id).HasColumnName("id");
 
                 entity.Property(e => e.Name)
                     .IsRequired()
@@ -153,9 +153,7 @@ namespace eWebAPISanSale.Models
 
                 entity.ToTable("ContentTag");
 
-                entity.Property(e => e.ContentId)
-                    .HasColumnName("ContentID")
-                    .ValueGeneratedOnAdd();
+                entity.Property(e => e.ContentId).HasColumnName("ContentID");
 
                 entity.Property(e => e.TagId)
                     .HasColumnName("TagID")
@@ -192,7 +190,7 @@ namespace eWebAPISanSale.Models
                 entity.HasOne(d => d.Type)
                     .WithMany(p => p.Menus)
                     .HasForeignKey(d => d.TypeId)
-                    .HasConstraintName("FK__Menu__TypeID__398D8EEE");
+                    .HasConstraintName("FK__Menu__TypeID__34C8D9D1");
             });
 
             modelBuilder.Entity<MenuType>(entity =>
@@ -231,8 +229,8 @@ namespace eWebAPISanSale.Models
                 entity.Property(e => e.IncludedVat).HasColumnName("IncludedVAT");
 
                 entity.Property(e => e.Link)
-                    .HasMaxLength(200)
-                    .IsFixedLength();
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.MetaDescriptions)
                     .HasMaxLength(250)
@@ -250,7 +248,7 @@ namespace eWebAPISanSale.Models
 
                 entity.Property(e => e.ModifiedDate).HasColumnType("datetime");
 
-                entity.Property(e => e.MoreImages).HasMaxLength(50);
+                entity.Property(e => e.MoreImages).HasColumnType("xml");
 
                 entity.Property(e => e.Name).HasMaxLength(250);
 
@@ -269,7 +267,8 @@ namespace eWebAPISanSale.Models
 
             modelBuilder.Entity<RefreshToken>(entity =>
             {
-                entity.HasKey(e => e.TokenId);
+                entity.HasKey(e => e.TokenId)
+                    .HasName("pk_refeshtoken");
 
                 entity.ToTable("RefreshToken");
 
@@ -290,7 +289,7 @@ namespace eWebAPISanSale.Models
                 entity.HasOne(d => d.Admin)
                     .WithMany(p => p.RefreshTokens)
                     .HasForeignKey(d => d.AdminId)
-                    .HasConstraintName("FK__RefreshTo__admin__47DBAE45");
+                    .HasConstraintName("FK__RefreshTo__admin__5FB337D6");
             });
 
             modelBuilder.Entity<Slide>(entity =>
