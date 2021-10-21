@@ -13,6 +13,7 @@ import CategoryList from "./components/CategoryList/CategoryList";
 
 
 class App extends Component {
+  
   render() {
     return (
       <BrowserRouter>
@@ -23,6 +24,7 @@ class App extends Component {
           
           <Route path="/" exact component={Home} />
           <Route path="/baiviet" component={Baiviet} />
+      
           <Route path="/productlist" component={ProductList} />
           <Route path="/categorylist" component={CategoryList} />
 
