@@ -11,8 +11,8 @@ export default function TaskList(props) {
             <h4 class="card-title"> Product </h4>
           </div>
           <div class="card-body">
-            <div class="table-responsive">
-              <table class="table">
+            <div class="table-responsive my-custom-scrollbar table-wrapper-scroll-y">
+              <table class="table" >
                 <thead class=" text-primary">
                   <th>Id</th>
                   <th>Tên</th>
@@ -29,7 +29,7 @@ export default function TaskList(props) {
                     return (
                       <tr>
                         <td>{item.id}</td>
-                        <td>{item.name}</td>
+                        <td >{item.name}</td>
                         <td>{item.promotionPrice}</td>
                         <td>{item.price}</td>
                         <td>{item.viewCount}</td>

@@ -85,3 +85,31 @@
         right: 30px;
     }
 }
+@media (max-width: 740px) {
+    .card-i {
+        display: block;
+        position: asolute;
+        margin: 10px!important;
+        justify-content: center;
+        z-index: 1!important;
+        
+    }
+    .cardimg {
+        justify-content: center;
+        margin-left: 40px;
+        width: 100 !important;
+        height: 100px;
+    }
+    .btnpre {
+        display: block;
+        position: relative;
+        top: -75px;
+    }
+    .btnnext {
+        display: block;
+        position: relative;
+        top: -100px;
+        float: right;
+        right: 30px;
+    }
+}

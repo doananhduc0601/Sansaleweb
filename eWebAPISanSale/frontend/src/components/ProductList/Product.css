@@ -12,3 +12,19 @@
     background-color:#226597;
     border-radius: 20px;
 }
+th{
+    border: 1px solid rgb(0, 0, 0,0.3)!important;
+}
+td{
+    border: 1px solid rgb(0, 0, 0,0.3)!important;
+}
+.my-custom-scrollbar {
+    position: relative;
+    border: 1px solid rgb(0, 0, 0,0.3)!important;
+    height: 500px;
+    overflow: auto;
+}
+.table-wrapper-scroll-y {
+    display: block;
+}
+
