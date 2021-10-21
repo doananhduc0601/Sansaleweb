@@ -13,12 +13,12 @@ const initialFieldValues = {
   description: "",
   image: "",
   //moreImages: "",
-  price: "",
-  promotionPrice: "",
+  price: "0",
+  promotionPrice: "0",
   //includedVat: "",
-  quantity: "",
+  quantity: "0",
   categoryId: "",
-  detail: "",
+  //detail: "",
   warranty: "",
   createdDate: "",
   //createdBy: "",
@@ -28,7 +28,7 @@ const initialFieldValues = {
   metaDescriptions: "",
   status: "",
   //topHot: "",
-  viewCount: "",
+  viewCount: "0",
   link: "",
   // category: null,
   imageSrc: defaultImageSrc,
@@ -117,7 +117,7 @@ export default function TaskFrom(props) {
   };
 
   const applyErrorClass = (field) =>
-    field in errors && errors[field] == false ? " invalid-field" : "";
+    field in errors && errors[field] == false ? "invalid-field" : "";
   return (
     <>
       <button
@@ -133,6 +133,7 @@ export default function TaskFrom(props) {
         type="button"
         onClick={() => setIsVisible(true)}
         style={{ display: isVisible ? "none" : "block" }}
+        // onChange={}
       >
         <RiAddCircleLine />
       </button>
@@ -188,7 +189,7 @@ export default function TaskFrom(props) {
             <div class="card-body">
               <form autoComplete="off" noValidate onSubmit={handleFormSubmit}>
                 <div class="row">
-                  <div class="col-md-3 pr-1">
+                  <div class="col-md-3">
                     <div class="form-group">
                       <label>Id</label>
                       <input
@@ -204,7 +205,7 @@ export default function TaskFrom(props) {
                     <div class="form-group">
                       <label>Tên Sản Phẩm</label>
                       <input
-                        class={"form-control" + applyErrorClass("name")}
+                        class="form-control"
                         placeholder="Tên sản phẩm"
                         name="name"
                         value={values.name}
@@ -214,12 +215,11 @@ export default function TaskFrom(props) {
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-2 pr-1">
+                  <div class="col-md-2">
                     <div class="form-group">
                       <label>Giá Gốc </label>
                       <input
-                        class={"form-control" + applyErrorClass("Giá")}
-                        disabled=""
+                        class="form-control"
                         placeholder="Giá Gốc"
                         name="promotionPrice"
                         value={values.promotionPrice}
@@ -227,7 +227,7 @@ export default function TaskFrom(props) {
                       />
                     </div>
                   </div>
-                  <div class="col-md-4 px-1">
+                  <div class="col-md-4 pl-1">
                     <div class="form-group">
                       <label>Giá Bán</label>
                       <input
@@ -269,14 +269,12 @@ export default function TaskFrom(props) {
                 </div>
 
                 <div class="row">
-                  <div class="col-md-8">
+                  <div class="col-md-8 pr-1">
                     <div class="form-group">
                       <label>Link Sản Phẩm</label>
                       <input
                         type="text"
-                        class={
-                          "form-control" + applyErrorClass("Link sản phẩm")
-                        }
+                        class="form-control"
                         placeholder="link"
                         name="link"
                         value={values.link}
@@ -286,25 +284,26 @@ export default function TaskFrom(props) {
                   </div>
                   <div class="col-md-4">
                     <div class="form-group">
-                      <label>Category</label>
+                      <label>Category ID</label>
                       {/* <input type="text" class="form-control" placeholder="category" name="categoryId" value={values.categoryId} onChange={handleInputChange}/> */}
                       <select
                         type="text"
-                        class={"form-control" + applyErrorClass("category")}
+                        class={"form-control" + applyErrorClass("categoryId")}
                         name="categoryId"
                         value={values.categoryId}
                         onChange={handleInputChange}
                       >
+                        <option>Chọn......</option>
                         <option value={1}>1 . Thiết Bị Điển Tử</option>
                         <option value={2}>2 . Quẩn Áo </option>
                         <option value={3}>3 . Food</option>
-                        <option value={4}>4 . Nội Thất</option>
+                        <option value={36}>36 . Giày dép</option>
                       </select>
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-4 pr-1">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label>Meta </label>
                       <input
@@ -317,7 +316,7 @@ export default function TaskFrom(props) {
                       />
                     </div>
                   </div>
-                  <div class="col-md-4 px-1">
+                  <div class="col-md-4 pl-1">
                     <div class="form-group">
                       <label>KeyWord</label>
                       <input
@@ -332,15 +331,13 @@ export default function TaskFrom(props) {
                   </div>
                   <div class="col-md-4 pl-1">
                     <div class="form-group">
-                      <label>Giảm %</label>
-                      <input type="text" placeholder="" class="form-control" name="detail"
-                        value={values.detail}
-                        onChange={handleInputChange} />
+                      <label>Tag</label>
+                      <input type="" class="form-control" placeholder="#" />
                     </div>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-md-4 pr-1">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label>Ngày tạo </label>
                       <input
@@ -353,7 +350,7 @@ export default function TaskFrom(props) {
                       />
                     </div>
                   </div>
-                  <div class="col-md-4 px-1">
+                  <div class="col-md-4 pl-1">
                     <div class="form-group">
                       <label>Ngày sửa</label>
                       <input
@@ -371,15 +368,15 @@ export default function TaskFrom(props) {
                     <div class="form-group">
                       <label>Trạng Thái </label>
                       <select
-                        type=""
                         class="form-control"
-                        placeholder="true"
                         name="status"
                         value={values.status}
                         onChange={handleInputChange}
+                        style={{ height: 57.6 }}
                       >
-                        <option value="True">True</option>
-                        <option value="False">False</option>
+                        <option>Chọn......</option>
+                        <option value={true}>True</option>
+                        <option value={false}>False</option>
                       </select>
                     </div>
                   </div>

@@ -40,16 +40,24 @@ export default function CategoryList() {
         .then((res) => {
           onSuccess();
           refreshEmployeeList();
+          window.confirm("Bạn đã Thêm thành công");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          window.confirm("Bạn đã Thêm thất bại");
+        });
     else
       employeeAPI()
         .update(formData.get("id"), formData)
         .then((res) => {
           onSuccess();
           refreshEmployeeList();
+          window.confirm("Bạn đã update thành công");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          console.log(err);
+          window.confirm("Mời bạn nhập lại");
+        });
   };
 
   const showRecordDetails = (data) => {
@@ -64,19 +72,28 @@ export default function CategoryList() {
         .then((res) => refreshEmployeeList())
         .catch((err) => console.log(err));
   };
-
+  const [isVisible, setIsVisible] = useState(false);
   return (
     <div class="container">
       {/* <div class="text-center">
         <h1>Quản Lý Công Việc</h1>
         <hr />
       </div> */}
-      <TaskForm1 addOrEdit={addOrEdit} recordForEdit={recordForEdit} />
+      <TaskForm1
+        addOrEdit={addOrEdit}
+        recordForEdit={recordForEdit}
+        isVisible={isVisible}
+        setIsVisible={setIsVisible}
+      />
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
         <Control1 />
-        <TaskList1 showRecordDetails={showRecordDetails}
+        <TaskList1
+          showRecordDetails={showRecordDetails}
           onDelete={onDelete}
-          employeeList={employeeList}/>
+          employeeList={employeeList}
+          setIsVisible={setIsVisible}
+          isVisible={isVisible}
+        />
       </div>
     </div>
   );

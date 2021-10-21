@@ -17,38 +17,10 @@ const initialFieldValues = {
 };
 
 export default function TaskForm(props) {
-  ///////////////////// I. thành phần hiển thị bên trái
-  // constructor(props) = () => {
-  //   super(props);
-  //   this.state = { id: "11", name: "22", status: false };
-  // }
-  ////////////////////////////////// Đóng thành phần bên trái //////////////////////////////////
-  // const onCloseForm = () => {
-  //  props.onCloseForm();
-  // };
-  ////////////////////////////////// Thêm dữ liệu //////////////////////////////////
-  // const onChange = (event) => {
-  //   var target = event.target;
-  //   var id = target.id;
-  //   var name = target.name;
-  //   var value = target.value;
-  //   this.state({
-  //     [name]: value,
-  //     // [id]: value,
-  //   });
-  // };
-  ////////////////////////////////// sự kiện submit //////////////////////////////////
-  // const onSubmit = () => {
-  //   console.log(this.state);
-  // };
-  ////////////////////////////////// render //////////////////////////////////
-
-  /////////////////// II. thêm thành phần IMAGE
   const { addOrEdit, recordForEdit } = props;
-
   const [values, setValues] = useState(initialFieldValues);
   const [errors, setErrors] = useState({});
-  const [isVisible, setIsVisible] = useState(false);
+  const { isVisible, setIsVisible } = props;
 
   useEffect(() => {
     if (recordForEdit != null) setValues(recordForEdit);
@@ -141,7 +113,7 @@ export default function TaskForm(props) {
             <div class="card-body">
               <form autoComplete="off" noValidate onSubmit={handleFormSubmit}>
                 <div class="row">
-                  <div class="col-md-4 pr-1">
+                  <div class="col-md-4">
                     <div class="form-group">
                       <label>Id</label>
                       <input
@@ -157,41 +129,43 @@ export default function TaskForm(props) {
                     <div class="form-group">
                       <label>Tên danh mục</label>
                       <input
-                        class={"form-control" + applyErrorClass("name")}
+                        class={"form-control" + applyErrorClass("nameCategory")}
                         placeholder="Tên sản phẩm"
-                        name="name"
-                        value={values.name}
+                        name="nameCategory"
+                        value={values.nameCategory}
                         onChange={handleInputChange}
                       />
                     </div>
                   </div>
-                
 
-                <div class="col-md-4 pr-1">
-                  <div class="form-group">
-                    <label>Trạng Thái </label>
-                    <input
-                      type=""
-                      class="form-control"
-                      placeholder="true"
-                      name="status"
-                      value={values.status}
-                      onChange={handleInputChange}
-                    />
+                  <div class="col-md-4">
+                    <div class="form-group">
+                      <label>Trạng Thái </label>
+                      <select
+                        class="form-control"
+                        placeholder="true"
+                        name="status"
+                        value={values.status}
+                        onChange={handleInputChange}
+                      >
+                        <option>Chọn......</option>
+                        <option value={true}>True</option>
+                        <option value={false}>False</option>
+                      </select>
+                    </div>
                   </div>
-                </div>
-                <div class="col-md-8 pl-1">
-                  <div class="form-group">
-                    <label>Tên danh mục</label>
-                    <input
-                      class={"form-control" + applyErrorClass("name")}
-                      placeholder="Tên sản phẩm"
-                      name="name"
-                      value={values.name}
-                      onChange={handleInputChange}
-                    />
+                  <div class="col-md-8 pl-1">
+                    <div class="form-group">
+                      <label>Meta title</label>
+                      <input
+                        class="form-control"
+                        placeholder="Meta title"
+                        name="metaTitle"
+                        value={values.metaTitle}
+                        onChange={handleInputChange}
+                      />
+                    </div>
                   </div>
-                </div>
                 </div>
                 <div class="row">
                   <div class="update ml-auto mr-auto">
@@ -200,7 +174,6 @@ export default function TaskForm(props) {
                     </button>
                   </div>
                 </div>
-                
               </form>
             </div>
           </div>
