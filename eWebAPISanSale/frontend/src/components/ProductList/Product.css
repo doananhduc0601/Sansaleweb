@@ -1,14 +1,19 @@
-.iconmofrom{
-    
-    border: none;
+.iconmofrom {
+  border: none;
 }
-.iconmofrom svg{
-    width: 35px;
-    height: 35px;
-    position: absolute;
-    top: 150px;
-    left: 6px;
-    z-index: 9;
-    background-color:#226597;
-    border-radius: 20px;
+.iconmofrom svg {
+  width: 35px;
+  height: 35px;
+  position: absolute;
+  top: 150px;
+  left: 6px;
+  z-index: 9;
+  background-color: #226597;
+  border-radius: 20px;
+}
+
+.invalid-field {
+  border-color: #dc3545;
+  color: #dc3545;
+  background-color: #fff;
 }

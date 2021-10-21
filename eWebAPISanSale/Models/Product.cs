@@ -34,7 +34,7 @@ namespace eWebAPISanSale.Models
         public bool? Status { get; set; }
         public DateTime? TopHot { get; set; }
         public int? ViewCount { get; set; }
-        public string Link { get; set; }
+        public string? Link { get; set; }
         [NotMapped]
         public IFormFile ImageFile { get; set; }
 
