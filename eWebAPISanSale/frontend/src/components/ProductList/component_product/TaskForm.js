@@ -18,7 +18,7 @@ const initialFieldValues = {
   //includedVat: "",
   quantity: "0",
   categoryId: "",
-  //detail: "",
+  detail: "",
   warranty: "",
   createdDate: "",
   //createdBy: "",
@@ -331,8 +331,10 @@ export default function TaskFrom(props) {
                   </div>
                   <div class="col-md-4 pl-1">
                     <div class="form-group">
-                      <label>Tag</label>
-                      <input type="" class="form-control" placeholder="#" />
+                      <label>Discount</label>
+                      <input type="" class="form-control" placeholder="#" name="detail"
+                        value={values.detail}
+                        onChange={handleInputChange} />
                     </div>
                   </div>
                 </div>

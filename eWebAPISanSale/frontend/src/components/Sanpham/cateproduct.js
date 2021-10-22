@@ -98,7 +98,7 @@ export default function Cateproduct() {
                                     Yêu thích
                                  </div> */}
                                  <div className="home-product-item__saleoff">
-                                    <span className="home-product-item__saleoff-percent">{item.detail}</span>
+                                    <span className="home-product-item__saleoff-percent">{item.detail}%</span>
                                     <span className="home-product-item__saleoff-label">GIẢM</span>
                                  </div>
 

@@ -1,13 +1,4 @@
-.iconmofrom {
-  border: none;
-}
-.iconmofrom svg {
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  top: 150px;
-  left: 6px;
-  z-index: 9;
-  background-color: #226597;
-  border-radius: 20px;
+.baiviet {
+  margin: 50px;
+  margin-top: 80px;
 }
