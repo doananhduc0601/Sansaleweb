@@ -17,6 +17,7 @@ class Home extends Component {
         <Categorymenu />
         <Dealsock />
         <Cateproduct/>
+        
       </div>
     );
   }

@@ -95,12 +95,16 @@
 // }
 
 import React, { useState } from "react";
+import Header from "../../../components/headerconteact/header";
 import TaskForm from "./component_baiviet/TaskForm_baiviet";
+import Homemenu from "../../../components/menuhome/homemenu";
 
 export default function BaiViet(props) {
   const [editor, setEditor] = useState(null);
   return (
     <>
+    <Header/>
+    <Homemenu/>
       <TaskForm
         handleChange={(data) => {
           setEditor(data);
@@ -108,6 +112,8 @@ export default function BaiViet(props) {
         data={editor}
         {...props}
       />
+     
+
     </>
   );
 }

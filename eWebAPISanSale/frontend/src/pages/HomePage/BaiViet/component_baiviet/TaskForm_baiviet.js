@@ -254,11 +254,8 @@
 // }
 import React,{useState} from "react";
 import { CKEditor } from "@ckeditor/ckeditor5-react";
-import ClassicEditor from "@ckeditor/ckeditor5-build-classic";
-import { NavItem } from "react-bootstrap";
-// import * as ClassicEditor from "../../../../ckeditor5/src/ckeditor";
-// import Image from '@ckeditor/ckeditor5-image/src/image';
-// import ImageResizeHandles from '@ckeditor/ckeditor5-image/src/imageresize/imageresizehandles';
+import DecoupledEditor from '@ckeditor/ckeditor5-build-decoupled-document';
+import "../Baiviet.css"
 const API_URL = "https://localhost:5001/api";
 const UPLOAD_ENDPOINT = "Contents/";
 const defaultImageSrc = "../assets/img/damir-bosnjak.jpg";
@@ -355,42 +352,33 @@ const { isVisible, setIsVisible } = props;
   };
   
   return (
-    <div className="App">
-      
- <textarea name="ckeditor" id="input" class="form-control" rows="3" required="required">
-   
-      <CKEditor
-              config={{
-                extraPlugins: [uploadPlugin],
-              
-              }}
-              editor={ClassicEditor}
-              onReady={(editor) => {}}
-              onBlur={(event, editor) => {}}
-              onFocus={(event, editor) => {}}
-              onChange={(event, editor) => {
-                handleChange(editor.getData());
-              }}
-              
-              {...props}
-            />
- </textarea>
+    <div className="container" >
+      <div className="baiviet">
+        <h2 style={{textAlign:"center"}}>Thêm Bài Viết</h2>
+                <CKEditor
+                    onReady={ editor => {
+                        console.log( 'Editor is ready to use!', editor );
+                        editor.ui.getEditableElement().parentElement.insertBefore(
+                            editor.ui.view.toolbar.element,
+                            editor.ui.getEditableElement()
+                        );
+                        editor = editor;
+                    } }
+                    onError={ ( { willEditorRestart } ) => {
+
+                        if ( willEditorRestart ) {
+                            this.editor.ui.view.toolbar.element.remove();
+                        }
+                    } }
+                    onChange={ ( event, editor ) => console.log( { event, editor } ) }
+                    editor={ DecoupledEditor }
+                    data="<p>Mời Bạn Nhập!</p>"
+                    config={{
+                      extraPlugins: [uploadPlugin],
+                    }}
+                />
  
-      <CKEditor
-        config={{
-          extraPlugins: [uploadPlugin],
-         
-        }}
-        editor={ClassicEditor}
-        onReady={(editor) => {}}
-        onBlur={(event, editor) => {}}
-        onFocus={(event, editor) => {}}
-        onChange={(event, editor) => {
-          handleChange(editor.getData());
-        }}
-        
-        {...props}
-      />
-    </div>
+        </div>
+      </div> 
   );
 }

@@ -1,28 +1,4 @@
-.iconmofrom {
-  border: none;
-}
-.iconmofrom svg {
-  width: 35px;
-  height: 35px;
-  position: absolute;
-  top: 150px;
-  left: 6px;
-  z-index: 9;
-  background-color: #226597;
-  border-radius: 20px;
-}
-.rdw-editor-main {
-  height: 250px;
-  /* overflow: auto; */
-  box-sizing: border-box;
-  border-radius: 2px;
-  border: 1px solid #F1F1F1;
-
-}
-.wrapperClassName .rdw-option-wrapper {
-  min-width: 37px;
-  height: 32px;
-  border-radius: 2px;
-  padding: 5px;
-  margin: 0 4px;
+.baiviet {
+  margin: 50px;
+  margin-top: 80px;
 }

@@ -34,7 +34,7 @@ export default function TaskList(props) {
                         <td>{item.price}</td>
                         <td>{item.viewCount}</td>
                         <td>{item.quantity}</td>
-
+                       
                         <td className="text-center">
                           <img
                             src={item.imageSrc}
@@ -81,6 +81,7 @@ export default function TaskList(props) {
                   })}
                 </tbody>
               </table>
+
             </div>
           </div>
         </div>

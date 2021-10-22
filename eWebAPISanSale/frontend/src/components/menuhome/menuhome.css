@@ -6,15 +6,18 @@
 }
     .search .i-serach {
         width:300px;
+        margin-top: 10px;
     }
     .search .b-serach {
         width:90px ;
-        height: 35px;
+        height: 30px;
         line-height: 0px!important;
+        margin-top: 10px;
+
     }
     .icon {
         width: 90px;
-        height: 35px;
+        height: 30px;
         margin-left:5px ;
         background-color:var(--primary-color);
         border-radius:5px ;
