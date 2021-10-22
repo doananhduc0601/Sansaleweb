@@ -8,6 +8,7 @@ import { Card, CardColumns } from "react-bootstrap";
 
 export default function Cateproduct() {
     const [employeeList, setEmployeeList] = useState([]);
+
   
     useEffect(() => {
       refreshEmployeeList();
@@ -29,6 +30,8 @@ export default function Cateproduct() {
         })
         .catch((err) => console.log(err));
     }
+
+    
     return (
         
         <div className="app_container">
@@ -38,7 +41,7 @@ export default function Cateproduct() {
                   <div className="home-filter">
                   <span className="home-filler_label"> Sắp xếp theo</span> 
                   
-                  <button class="home-filler_btn btn-cate btn-primary ">Phổ Biến</button>
+                  <button class="home-filler_btn btn-cate btn-primary " >Phổ Biến</button>
                   <button class="home-filler_btn btn-cate ">Mới Nhất</button>
                   <button class="home-filler_btn btn-cate ">Bán Chạy</button>
                   <select type="text" class="select-input"  name="categoryId"
@@ -71,7 +74,7 @@ export default function Cateproduct() {
                         return(
                           <div className="gird__column-2">
                           {/* product item */}
-                          <a className="home-product-item" href={item.link}>
+                          <a className="home-product-item" href={item.link} >
                             <div className="home-product-item-img">
                               <img src={item.imageSrc}></img>
                               
