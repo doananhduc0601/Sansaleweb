@@ -73,9 +73,7 @@ namespace eWebAPISanSale.Models
             {
                 entity.ToTable("Category");
 
-                entity.Property(e => e.Id)
-                    .HasColumnName("ID")
-                    .ValueGeneratedNever();
+                entity.Property(e => e.Id).HasColumnName("ID");
 
                 entity.Property(e => e.MetaTitle).HasMaxLength(150);
 
@@ -229,6 +227,10 @@ namespace eWebAPISanSale.Models
                 entity.Property(e => e.Image).HasMaxLength(250);
 
                 entity.Property(e => e.IncludedVat).HasColumnName("IncludedVAT");
+
+                entity.Property(e => e.Link)
+                    .HasMaxLength(250)
+                    .IsUnicode(false);
 
                 entity.Property(e => e.MetaDescriptions)
                     .HasMaxLength(250)

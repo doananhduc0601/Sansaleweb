@@ -10,12 +10,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -98,11 +100,16 @@ namespace eWebAPISanSale
             app.UseAuthorization();
             app.UseCors(options => options
             
-                .WithOrigins("http://localhost:3001", "http://localhost:5001", "http://localhost:3000")
+                .WithOrigins("http://localhost:5001", "http://localhost:3001", "http://localhost:3000")
                 .AllowAnyHeader()
                .AllowAnyMethod()
                .AllowCredentials()
                                   );
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "Images")),
+                RequestPath = "/Images"
+            });
             app.UseSwagger();
             app.UseSwaggerUI(ui =>
             {

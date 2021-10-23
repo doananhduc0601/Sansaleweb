@@ -1,0 +1,46 @@
+.dealsock {
+    margin-top: 30px;
+    height: 450px;
+    border: 1px solid var(--secondary-color);
+    background-color: var(--secondary-color);
+    border-radius: 10px;
+}
+
+.dealsock-body {
+    margin-top: -20px;
+    height: 385px;
+    background-color: var(--third-color);
+}
+
+.title-comm {
+    color: #fff;
+    font-size: 18px;
+    position: relative;
+    margin-top: 50px;
+    font-weight: 700;
+    background-color: #fff;
+    text-align: center;
+}
+
+
+
+h3.title-holder {
+    text-align: center;
+    line-height: 30px;
+    font-size: 40px;
+    color: white;
+    margin-top: 65px;
+}
+
+.dealsock-time {
+    margin-top: 50px;
+    height: 100px;
+}
+
+.main-example {
+    border-radius: 10px;
+    background-color: var(--secondary-color);
+    width: 300px;
+    height: 60px;
+    margin: auto;
+}

@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eWebAPISanSale.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace eWebAPISanSale.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class TagsController : ControllerBase
