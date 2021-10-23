@@ -6,26 +6,15 @@ import Dashboard from "./pages/DashBoard/Dashboard";
 import PrivateRoute from "./Utils/PrivateRoute";
 import PublicRoute from "./Utils/PublicRoute";
 import Home from "./pages/HomePage/Trangchu/Home";
-import Baiviet from "./pages/HomePage/BaiViet/Baiviet";
-
-import ProductList from "./components/ProductList/ProductList";
-import CategoryList from "./components/CategoryList/CategoryList";
-
 
 class App extends Component {
   render() {
     return (
       <BrowserRouter>
         <div className="App">
-
           <PublicRoute path="/login" component={Login} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
-          
           <Route path="/" exact component={Home} />
-          <Route path="/baiviet" component={Baiviet} />
-          <Route path="/productlist" component={ProductList} />
-          <Route path="/categorylist" component={CategoryList} />
-
         </div>
       </BrowserRouter>
     );
