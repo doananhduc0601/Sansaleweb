@@ -4,7 +4,6 @@ import "./cateproduct.css";
 import { BiChevronLeft,BiChevronRight} from 'react-icons/bi';
 import {AiOutlineHeart} from 'react-icons/ai';
 
-import { Card, CardColumns } from "react-bootstrap";
 
 export default function Cateproduct() {
     const [employeeList, setEmployeeList] = useState([]);
@@ -14,9 +13,10 @@ export default function Cateproduct() {
       refreshEmployeeList();
     }, []);
   
-    const employeeAPI = (url = "https://localhost:5001/api/Products") => {
+    const employeeAPI = (url = "https://localhost:5001/api/Products/") => {
       return {
         fetchAll: () => axios.get(url),
+        update: (id, updatedRecord) => axios.put(url + id, updatedRecord),
 
       };
     };
@@ -26,12 +26,20 @@ export default function Cateproduct() {
         .fetchAll()
         .then((res) => {
           setEmployeeList(res.data);
-          console.log(res.data);
+          
         })
         .catch((err) => console.log(err));
     }
+    //tính số click trên sản phẩm
 
-    
+    const onclick = (e, id,name,metaTitle,description,image,price,promotionPrice,categoryId
+      ,quantity,detail,metaKeywords,metaDescriptions,status,viewCount,link,imageFile,imageSrc) => {
+
+    axios.put(`https://localhost:5001/api/Products/body/${id}`, {id,name,metaTitle,description,image,price,promotionPrice,
+    categoryId,quantity,detail,metaKeywords,metaDescriptions,status,viewCount:viewCount+1,link,imageFile,imageSrc});
+          
+  
+    };
     return (
         
         <div className="app_container">
@@ -74,7 +82,10 @@ export default function Cateproduct() {
                         return(
                           <div className="gird__column-2">
                           {/* product item */}
-                          <a className="home-product-item" href={item.link} >
+                          <a className="home-product-item" href={item.link}  onClick={(e) =>
+                             onclick(e, parseInt(item.id),item.name,item.metaTitle,item.description,item.image,item.price,item.promotionPrice,item.categoryId
+                             ,item.quantity,item.detail,item.metaKeywords,item.metaDescriptions,item.status,item.viewCount,item.link,item.imageFile,item.imageSrc)
+                            }>
                             <div className="home-product-item-img">
                               <img src={item.imageSrc}></img>
                               
@@ -90,7 +101,7 @@ export default function Cateproduct() {
                                      <i><AiOutlineHeart/></i>
                                    </span>
                                    <span className="home-product-item__sub">
-                                     <i>Đã bán{item.quantity}</i>
+                                     <i>Số lượng Click {item.viewCount}</i>
                                    </span>
                                  </div>
                                  <div className="home-product-item__origin">
