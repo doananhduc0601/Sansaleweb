@@ -15,6 +15,7 @@ import { BsArrowRightCircle, BsArrowDownCircle } from "react-icons/bs";
 import ProductList from "../../components/ProductList/ProductList";
 import Setting from "../../components/Setting/Setting";
 import CategoryList from "../../components/CategoryList/CategoryList";
+import BaiViet from "../../components/BaiViet/Baiviet";
 
 function Dashboard(props) {
   const [isVisible, setIsVisible] = useState(true);
@@ -72,7 +73,7 @@ function Dashboard(props) {
     },
     {
       name: "Bài Viết ",
-      to: "/dashboard/info",
+      to: "/dashboard/baiviet",
       exact: true,
       icon: <BsFillJournalBookmarkFill />,
     },
@@ -273,6 +274,7 @@ function Dashboard(props) {
             <div class="content">
               <Route path="/dashboard/categorylist" component={CategoryList} />
               <Route path="/dashboard/productlist" component={ProductList} />
+              <Route path="/dashboard/baiviet" component={BaiViet} />
               <Route path="/dashboard/setting" component={Setting} />
               <div class="card col-md-3 align-items-center  " id="info">
                 <div class="card-header">
