@@ -75,6 +75,19 @@ namespace eWebAPISanSale.Controllers
 
             return product;
         }
+        [HttpGet("viewCout/{id}")]
+        public async Task<ActionResult<Product>> GetProductviewCount(int id)
+        {
+          
+            var product = await _context.Products.FindAsync(id);
+
+            if (product == null)
+            {
+                return NotFound();
+            }
+
+            return product;
+        }
 
         // PUT: api/Products/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
@@ -112,11 +125,38 @@ namespace eWebAPISanSale.Controllers
 
             return NoContent();
         }
+        [HttpPut("body/{id}")]
+        public async Task<IActionResult> PutProductbody(int id, Product product)
+        {
+            if (id != product.Id)
+            {
+                return BadRequest();
+            }
+            
+            _context.Entry(product).State = EntityState.Modified;
 
+            try
+            {
+                await _context.SaveChangesAsync();
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!ProductExists(id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+            return NoContent();
+        }
         // POST: api/Products
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
-        
+
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct([FromForm]Product product)
         {

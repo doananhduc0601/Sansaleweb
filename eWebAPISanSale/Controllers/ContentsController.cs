@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using eWebAPISanSale.Models;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
 
 namespace eWebAPISanSale.Controllers
 {
@@ -14,10 +16,12 @@ namespace eWebAPISanSale.Controllers
     public class ContentsController : ControllerBase
     {
         private readonly SanSaleContext _context;
+        private readonly IWebHostEnvironment _hostEnvironment;
 
-        public ContentsController(SanSaleContext context)
+        public ContentsController(SanSaleContext context, IWebHostEnvironment hostEnvironment)
         {
             _context = context;
+            this._hostEnvironment = hostEnvironment;
         }
 
         // GET: api/Contents
@@ -25,6 +29,32 @@ namespace eWebAPISanSale.Controllers
         public async Task<ActionResult<IEnumerable<Content>>> GetContents()
         {
             return await _context.Contents.ToListAsync();
+
+            return await _context.Contents
+                .Select(x => new Content()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    MetaTitle = x.MetaTitle,
+                    Description = x.Description,
+                    Image = x.Image,
+                    CategoryId = x.CategoryId,
+                    Detail = x.Detail,
+                    Warranty = x.Warranty,
+                    CreatedDate = x.CreatedDate,
+                    CreatedBy = x.CreatedBy,
+                    ModifiedDate = x.ModifiedDate,
+                    ModifiedBy = x.ModifiedBy,
+                    MetaKeywords = x.MetaKeywords,
+                    MetaDescriptions = x.MetaDescriptions,
+                    Status = x.Status,
+                    TopHot = x.TopHot,
+                    ViewCount = x.ViewCount,
+                    Tags = x.Tags,
+                    Language = x.Language,
+                    ImageSrc = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.Image)
+                })
+                .ToListAsync();
         }
 
         // GET: api/Contents/5
@@ -45,13 +75,17 @@ namespace eWebAPISanSale.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutContent(int id, Content content)
+        public async Task<IActionResult> PutContent(int id, [FromForm] Content content)
         {
             if (id != content.Id)
             {
                 return BadRequest();
             }
-
+            if (content.ImageFile != null)
+            {
+                DeleteImage(content.Image);
+                content.Image = await SaveImage(content.ImageFile);
+            }
             _context.Entry(content).State = EntityState.Modified;
 
             try
@@ -77,12 +111,13 @@ namespace eWebAPISanSale.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Content>> PostContent(Content content)
+        public async Task<ActionResult<Content>> PostContent([FromForm] Content content)
         {
+            content.Image = await SaveImage(content.ImageFile);
             _context.Contents.Add(content);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetContent", new { id = content.Id }, content);
+            return content;
         }
 
         // DELETE: api/Contents/5
@@ -94,7 +129,7 @@ namespace eWebAPISanSale.Controllers
             {
                 return NotFound();
             }
-
+            DeleteImage(content.Image);
             _context.Contents.Remove(content);
             await _context.SaveChangesAsync();
 
@@ -104,6 +139,26 @@ namespace eWebAPISanSale.Controllers
         private bool ContentExists(int id)
         {
             return _context.Contents.Any(e => e.Id == id);
+        }
+
+        [NonAction]
+        public async Task<string> SaveImage(IFormFile imageFile)
+        {
+            string imageName = new String(Path.GetFileNameWithoutExtension(imageFile.FileName).Take(10).ToArray()).Replace(' ', '+');
+            imageName = imageName + DateTime.Now.ToString("yymmssfff") + Path.GetExtension(imageFile.FileName);
+            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
+            using (var fileStream = new FileStream(imagePath, FileMode.Create))
+            {
+                await imageFile.CopyToAsync(fileStream);
+            }
+            return imageName;
+        }
+        [NonAction]
+        public void DeleteImage(string imageName)
+        {
+            var imagePath = Path.Combine(_hostEnvironment.ContentRootPath, "Images", imageName);
+            if (System.IO.File.Exists(imagePath))
+                System.IO.File.Delete(imagePath);
         }
     }
 }
