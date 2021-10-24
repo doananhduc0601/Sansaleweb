@@ -3,6 +3,7 @@
     height: 50px;
     display:flex;
     max-width: 400px;
+    margin-top: 5px;
 }
     .search .i-serach {
         width:300px;
@@ -14,7 +15,7 @@
     }
     .icon {
         width: 90px;
-        height: 35px;
+        height: 25px;
         margin-left:5px ;
         background-color:var(--primary-color);
         border-radius:5px ;
@@ -28,9 +29,12 @@
     align-items: center;
     background: #fff;
     box-shadow: 0 5px 25px rgb(0 0 0 / 20%);
-    height: 80px;
+    height: 70px;
     transition: 0.6s;
     color: black;
+    position: sticky;
+    top: 0;
+    
 }
 
 .sticky {
@@ -51,12 +55,13 @@
 }
 .header .navigation {
     position: relative;
-    
+    text-align: center;
     transition: 0.6s;
     transition-property: line-height;
     display: flex;
     justify-content: center;
     width:100%;
+    margin-top: 15px;
 }
 
 
