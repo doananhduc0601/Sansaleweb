@@ -89,7 +89,7 @@ export default class slidecare extends Component {
                <img src={categroty[1]} alt="iconcomputer"/>
             </div>
             <div className="">
-                <h5>Thiết bị Điện Tử </h5>
+                <h5>Food </h5>
         
             </div>
         </div>
@@ -100,7 +100,7 @@ export default class slidecare extends Component {
                <img src={categroty[2]} alt="iconcomputer"/>
             </div>
             <div className="">
-                <h5>Thiết bị Điện Tử </h5>
+                <h5>Quần áo </h5>
         
             </div>
         </div>
@@ -111,7 +111,7 @@ export default class slidecare extends Component {
                <img src={categroty[3]} alt="iconcomputer"/>
             </div>
             <div className="">
-                <h5>Thiết bị Điện Tử </h5>
+                <h5>Giày dép </h5>
         
             </div>
         </div>
@@ -122,7 +122,7 @@ export default class slidecare extends Component {
                <img src={categroty[4]} alt="iconcomputer"/>
             </div>
             <div className="">
-                <h5>Thiết bị Điện Tử </h5>
+                <h5>Cosmectic</h5>
         
             </div>
         </div>
@@ -133,7 +133,7 @@ export default class slidecare extends Component {
                <img src={categroty[5]} alt="iconcomputer"/>
             </div>
             <div className="">
-                <h5>Thiết bị Điện Tử </h5>
+                <h5>Đồng Hồ </h5>
         
             </div>
         </div>
@@ -144,7 +144,7 @@ export default class slidecare extends Component {
                <img src={categroty[6]} alt="iconcomputer"/>
             </div>
             <div className="">
-                <h5>Thiết bị Điện Tử </h5>
+                <h5>Nạp thẻ </h5>
         
             </div>
         </div>

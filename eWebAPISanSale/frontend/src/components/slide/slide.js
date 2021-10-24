@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import '../slide/slide.css';
 
 const slide =[
-    './img/slide.png',
-    './img/slide1.jpg',
-    './img/slides2.jpg',
+    './img/side1113.png',
+    './img/side1111.png',
+    './img/side1112.png',
      './img/br1.jpg'
 
 //src={slide[1]}

@@ -35,11 +35,7 @@ const menus = [
     to: "/call",
     exact: true,
   },
-  {
-    name: "categorylist",
-    to: "/categorylist",
-    exact: true,
-  },
+
 ];
 const MenuLink = ({ label, to, activeOnlyWhenExact }) => {
   return (
