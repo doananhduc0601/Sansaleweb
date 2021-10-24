@@ -4,6 +4,9 @@
     height: 40px;
     background-color: var(--primary-color);
 }
+.hed{
+    font-size: 14px;
+}
 
 .header-contact .contact-phone {
     float: right;
@@ -35,7 +38,6 @@
 }
 
 .header-contact i {
-    margin-top: 3px;
     margin-right: 10px;
     color: white;
 }

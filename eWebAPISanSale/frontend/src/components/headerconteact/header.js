@@ -10,15 +10,15 @@ class Header extends Component {
             <div className="header-contact ">
             <div className="contact-phone ">
                 <i><BsCursor/></i>
-                <p className="">0352222522</p>
+                <p className="hed">0352222522</p>
             </div>
             <div className="contact-mail ">
                 <i ><BsEnvelope/></i>
-                <p className="">sansalehot@gmail.com</p>
+                <p className="hed">sansalehot@gmail.com</p>
             </div>
             <div className="contact-compa ">
                 <i ><BsBriefcase/></i>
-                <p className="">Company DT</p>
+                <p className="hed">Company DT</p>
             </div>
         </div>
         <div>

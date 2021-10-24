@@ -2,7 +2,7 @@
     
     height: 500px;
     border: 1px solid var(--secondary-color);
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-color)!important;
     border-radius: 10px;
 }
 

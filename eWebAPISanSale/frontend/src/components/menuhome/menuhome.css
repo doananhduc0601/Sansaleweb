@@ -74,9 +74,12 @@
     user-select: none;
     width:50%;
    margin-top: 5px;
+
 }
 .menu-item{
     display: flex;
+    margin-left: 0px!important;
+
 }
 
 
@@ -84,6 +87,8 @@
     width: 90px;
     height: 30px;
     text-align: center;
+    font-size: 14px;
+
 }
 
 .menu-item .active{
