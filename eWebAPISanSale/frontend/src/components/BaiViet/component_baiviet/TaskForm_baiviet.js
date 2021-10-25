@@ -79,7 +79,9 @@ export default function TaskForm_baiviet(props) {
       formData.append("id", values.id);
       formData.append("name", values.name);
       formData.append("metaTitle", values.metaTitle);
-      formData.append("content1", addData);
+      formData.append("content1",addData);
+      formData.append("content1",values.content1);
+
       formData.append("categoryId", values.categoryId);
       formData.append("tags", values.tags);
       addOrEdit(formData, resetForm);
@@ -188,10 +190,9 @@ export default function TaskForm_baiviet(props) {
                   onChange={handleInputChange}
                 >
                   <option>Chọn......</option>
-                  <option value="a">a</option>
-                  <option value="b">b</option>
-                  <option value="c">c</option>
-                  <option value="d">d</option>
+                  <option value="dongho">Đồng hồ</option>
+                  <option value="laptop">Lap Top</option>
+                  <option value="salesock">Sale Sock</option>
                 </select>
               </div>
             </div>
