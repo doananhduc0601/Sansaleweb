@@ -28,6 +28,7 @@ export default function TaskList_baiViet(props) {
                         <td>{item.categoryId}</td>
                         <td>{item.metaTitle}</td>
 
+
                         <td class="text-center">
                           <button
                             type="button"
