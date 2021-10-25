@@ -27,10 +27,12 @@
   left: -20px;
   top: 100px;
   z-index:100;
-  background-color: var(--third-color);
+  border-radius: 20px;
 }
 .active {
   background-color:var(--secondary-color);
+  border-radius: 20px;
+
   
 }
 .active p{

@@ -188,10 +188,13 @@ export default function TaskForm_baiviet(props) {
                   onChange={handleInputChange}
                 >
                   <option>Chọn......</option>
-                  <option value="a">a</option>
+                  <option value="dongho">Đồng Hồ</option>
+                  <option value="sealsock">Sale Sock</option>
+                  <option value="laptop">Laptop</option>
+                  {/* <option value="a">a</option>
                   <option value="b">b</option>
                   <option value="c">c</option>
-                  <option value="d">d</option>
+                  <option value="d">d</option> */}
                 </select>
               </div>
             </div>

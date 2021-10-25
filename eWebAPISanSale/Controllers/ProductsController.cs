@@ -65,7 +65,38 @@ namespace eWebAPISanSale.Controllers
         [HttpGet("GetProducts_status")]
         public async Task<ActionResult<IEnumerable<Product>>> GetProducts_status(Boolean status)
         {
-            return _context.Products.Where(pro => pro.Status == status).ToList();
+            return _context.Products
+                .Select(x => new Product()
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Code = x.Code,
+                    MetaTitle = x.MetaTitle,
+                    Description = x.Description,
+                    Image = x.Image,
+                    MoreImages = x.MoreImages,
+                    Price = x.Price,
+                    PromotionPrice = x.PromotionPrice,
+                    IncludedVat = x.IncludedVat,
+                    Quantity = x.Quantity,
+                    CategoryId = x.CategoryId,
+                    Detail = x.Detail,
+                    Warranty = x.Warranty,
+                    CreatedDate = x.CreatedDate,
+                    CreatedBy = x.CreatedBy,
+                    ModifiedDate = x.ModifiedDate,
+                    ModifiedBy = x.ModifiedBy,
+                    MetaKeywords = x.MetaKeywords,
+                    MetaDescriptions = x.MetaDescriptions,
+                    Status = x.Status,
+                    TopHot = x.TopHot,
+                    ViewCount = x.ViewCount,
+                    Link = x.Link,
+                    ImageSrc = String.Format("{0}://{1}{2}/Images/{3}", Request.Scheme, Request.Host, Request.PathBase, x.Image)
+                })
+                
+                
+                .Where(pro => pro.Status == status).ToList();
                 
         }
 

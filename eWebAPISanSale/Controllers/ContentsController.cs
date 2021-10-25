@@ -67,7 +67,7 @@ namespace eWebAPISanSale.Controllers
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutContent(int id, Content content)
+        public async Task<IActionResult> PutContent(int id, [FromForm] Content content)
         {
             if (id != content.Id)
             {
