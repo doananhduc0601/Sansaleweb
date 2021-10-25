@@ -25,5 +25,6 @@ namespace eWebAPISanSale.Models
         public IFormFile ImageFile { get; set; }
         [NotMapped]
         public string ImageSrc { get; set; }
+
     }
 }

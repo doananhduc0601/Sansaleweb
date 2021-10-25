@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 // Code scaffolded by EF Core assumes nullable reference types (NRTs) are not used or disabled.
 // If you have enabled NRTs for your project, then un-comment the following line:
@@ -23,12 +25,16 @@ namespace eWebAPISanSale.Models
         public string ModifiedBy { get; set; }
         public string MetaKeywords { get; set; }
         public string MetaDescriptions { get; set; }
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
         public DateTime? TopHot { get; set; }
         public int? ViewCount { get; set; }
         public string Tags { get; set; }
         public string Language { get; set; }
         public string Content1 { get; set; }
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
+        [NotMapped]
+        public string ImageSrc { get; set; }
 
         public virtual Category Category { get; set; }
         public virtual Tag TagsNavigation { get; set; }

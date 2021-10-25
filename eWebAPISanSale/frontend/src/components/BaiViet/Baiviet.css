@@ -1,6 +1,8 @@
 .baiviet {
   margin: 50px;
-  margin-top: 80px;
+}
+.baiviet-ck {
+  width: 100%;
 }
 
 .invalid-field {

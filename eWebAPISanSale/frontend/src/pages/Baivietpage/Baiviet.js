@@ -12,7 +12,7 @@ export default function Baiviethome() {
             <Homemenu/>
             <div className="container-bv">
                 <div className="container">
-                    <div className="baiviet">
+                    <div className="baiviet-home">
                         <div className="baiviet-body">
                             <h1 className="title">Giảm giá sock khi bạn ghé thăm trang web của chúng tôi</h1>
                             <p className="metatitle">Qua dịp Shopee 10.10 bạn và mình lại đến với dịp Shopee 11.11 
