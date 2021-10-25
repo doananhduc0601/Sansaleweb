@@ -94,13 +94,13 @@ export default function BaiViet(props) {
           isVisible={isVisible}
         />
         <div>
-          {employeeList.map((item) => {
+          {/* {employeeList.map((item) => {
             return (
               <>
                 <div> {parse(item.content1)} </div>
               </>
             );
-          })}
+          })} */}
         </div>
       </div>
     </div>

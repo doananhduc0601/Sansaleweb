@@ -230,7 +230,7 @@ export default function TaskForm_baiviet(props) {
             </div>
           </div>
           <div class="row">
-            <div className="baiviet">
+            <div className="baiviet-ck">
               <h2 style={{ textAlign: "center" }}>Thêm Bài Viết</h2>
               <CKEditor
                 onReady={(editor) => {
