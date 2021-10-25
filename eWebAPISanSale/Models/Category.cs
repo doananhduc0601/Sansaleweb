@@ -21,14 +21,12 @@ namespace eWebAPISanSale.Models
         public string NameCategory { get; set; }
         public bool? Status { get; set; }
         public string MetaTitle { get; set; }
+        [NotMapped]
+        public IFormFile ImageFile { get; set; }
+        [NotMapped]
+        public string ImageSrc { get; set; }
 
         public virtual ICollection<Content> Contents { get; set; }
         public virtual ICollection<Product> Products { get; set; }
-
-        [NotMapped]
-        public IFormFile ImageFile { get; set; }
-
-        [NotMapped]
-        public string ImageSrc { get; set; }
     }
 }

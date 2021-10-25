@@ -169,8 +169,6 @@ namespace eWebAPISanSale.Models
                     .HasColumnName("ID")
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.Property(e => e.Content).HasColumnType("ntext");
             });
 
             modelBuilder.Entity<Menu>(entity =>
