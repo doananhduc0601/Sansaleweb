@@ -35,8 +35,8 @@ namespace eWebAPISanSale.Models
         public virtual Tag TagsNavigation { get; set; }
         [NotMapped]
         public IFormFile ImageFile { get; set; }
-
         [NotMapped]
         public string ImageSrc { get; set; }
+
     }
 }

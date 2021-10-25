@@ -20,6 +20,7 @@ class Home extends Component {
         <Dealsock />
         <Cateproduct/>
         <Footer/>
+       
       </div>
     );
   }
