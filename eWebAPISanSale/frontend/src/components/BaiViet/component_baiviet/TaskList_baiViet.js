@@ -35,6 +35,7 @@ export default function TaskList_baiViet(props) {
                             onClick={() => {
                               props.showRecordDetails(item);
                               props.setIsVisible(true);
+                              
                             }}
                           >
                             <AiOutlineEdit />

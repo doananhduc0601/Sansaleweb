@@ -30,7 +30,7 @@ const initialFieldValues = {
   // //modifiedBy: "",
   // metaKeywords: "",
   // metaDescriptions: "",
-  // status: "",
+  status: "",
   tags: "",
   // viewCount: "",
   // link: "",
@@ -56,6 +56,7 @@ export default function TaskForm_baiviet(props) {
       ...values,
       [name]: value,
     });
+ 
   };
 
   const validate = () => {
@@ -80,6 +81,7 @@ export default function TaskForm_baiviet(props) {
       formData.append("name", values.name);
       formData.append("metaTitle", values.metaTitle);
       formData.append("content1", addData);
+      formData.append("status", values.status);
       formData.append("categoryId", values.categoryId);
       formData.append("tags", values.tags);
       addOrEdit(formData, resetForm);
@@ -124,6 +126,7 @@ export default function TaskForm_baiviet(props) {
   const handleChange = (e, editor) => {
     const data = editor.getData();
     // JSON.parse(data);
+    
     setVal(data);
     // values.description(data);
   };
@@ -217,6 +220,22 @@ export default function TaskForm_baiviet(props) {
                 </select>
               </div>
             </div>
+            <div class="col-md-4 pl-1">
+                    <div class="form-group">
+                      <label>Trạng Thái </label>
+                      <select
+                        class="form-control"
+                        name="status"
+                        value={values.status}
+                        onChange={handleInputChange}
+                        style={{ height: 57.6 }}
+                      >
+                        <option>Chọn......</option>
+                        <option value={true}>True</option>
+                        <option value={false}>False</option>
+                      </select>
+                    </div>
+                  </div>
           </div>
           <div class="row">
             <div class="col-md-12">
@@ -250,7 +269,7 @@ export default function TaskForm_baiviet(props) {
                     this.editor.ui.view.toolbar.element.remove();
                   }
                 }}
-                onChange={handleChange}
+               onChange={handleChange}
                 editor={DecoupledEditor}
                 data={addData}
                 config={{
@@ -258,15 +277,16 @@ export default function TaskForm_baiviet(props) {
                 }}
                 name="content1"
                 value={values.content1}
-                onSubmit={handleInputChange}
+                onSubmit={ handleInputChange}
               />
             </div>
             {/* <div> {console.log(addData)}</div> */}
             <div class="row">
               <div class="update ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary btn-round">
+                <button type="submit" class="btn btn-primary btn-round"  >
                   ADD/UPDATE
                 </button>
+
               </div>
             </div>
           </div>
