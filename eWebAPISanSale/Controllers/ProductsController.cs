@@ -61,9 +61,16 @@ namespace eWebAPISanSale.Controllers
                 })
                 .ToListAsync();
         }
-
         // GET: api/Products/5
-        [HttpGet("{id}")]
+        [HttpGet("GetProducts_status")]
+        public async Task<ActionResult<IEnumerable<Product>>> GetProducts_status(Boolean status)
+        {
+            return _context.Products.Where(pro => pro.Status == status).ToList();
+                
+        }
+
+         // GET: api/Products/5
+         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
             var product = await _context.Products.FindAsync(id);

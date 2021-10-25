@@ -297,7 +297,9 @@ export default function TaskFrom(props) {
                         <option value={1}>1 . Thiết Bị Điển Tử</option>
                         <option value={2}>2 . Quẩn Áo </option>
                         <option value={3}>3 . Food</option>
-                        <option value={36}>36 . Giày dép</option>
+                        <option value={4}>4 . Quần áo</option>
+                        <option value={5}>5 . Cosmectic</option>
+
                       </select>
                     </div>
                   </div>

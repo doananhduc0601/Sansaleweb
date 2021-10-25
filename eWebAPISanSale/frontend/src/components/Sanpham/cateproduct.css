@@ -8,9 +8,8 @@
 .app_container{
     background-color: #f5f5f5;
     margin-top: 40px;
-    height: 1000px;
+    height: 100%;
 }
-
 
 .grid {
     width: 1200px;

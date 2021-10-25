@@ -6,6 +6,8 @@ import Dashboard from "./pages/DashBoard/Dashboard";
 import PrivateRoute from "./Utils/PrivateRoute";
 import PublicRoute from "./Utils/PublicRoute";
 import Home from "./pages/HomePage/Trangchu/Home";
+import Baiviethome from "./pages/Baivietpage/Baiviet";
+import Backtotop from './components/backtotop/backtotop'
 
 class App extends Component {
   render() {
@@ -14,7 +16,9 @@ class App extends Component {
         <div className="App">
           <PublicRoute path="/login" component={Login} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
+          <Route path="/baiviet" component={Baiviethome} />
           <Route path="/" exact component={Home} />
+          <Backtotop/>
         </div>
       </BrowserRouter>
     );
