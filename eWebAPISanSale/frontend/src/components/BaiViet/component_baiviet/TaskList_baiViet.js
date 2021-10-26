@@ -34,10 +34,12 @@ export default function TaskList_baiViet(props) {
                             type="button"
                             class="btn btn-warning"
                             onClick={() => {
+                              props.setNumber(-1);
                               props.showRecordDetails(item);
                               props.setIsVisible(true);
                             }}
                           >
+                            {/* {console.log(props.setNumber)} */}
                             <AiOutlineEdit />
                           </button>
                           &nbsp;
