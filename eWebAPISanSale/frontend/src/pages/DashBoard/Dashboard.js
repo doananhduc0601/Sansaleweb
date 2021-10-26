@@ -16,6 +16,7 @@ import ProductList from "../../components/ProductList/ProductList";
 import Setting from "../../components/Setting/Setting";
 import CategoryList from "../../components/CategoryList/CategoryList";
 import BaiViet from "../../components/BaiViet/Baiviet";
+import Slides from "../../components/sideconf/Sideconf";
 
 function Dashboard(props) {
   const [isVisible, setIsVisible] = useState(true);
@@ -61,7 +62,7 @@ function Dashboard(props) {
     },
     {
       name: "Setting Slides",
-      to: "/dashboard/setting",
+      to: "/dashboard/slides",
       exact: true,
       icon: <AiFillSetting />,
     },
@@ -275,7 +276,7 @@ function Dashboard(props) {
               <Route path="/dashboard/categorylist" component={CategoryList} />
               <Route path="/dashboard/productlist" component={ProductList} />
               <Route path="/dashboard/baiviet" component={BaiViet} />
-              <Route path="/dashboard/setting" component={Setting} />
+              <Route path="/dashboard/slides" component={Slides} />
               <div class="card col-md-3 align-items-center  " id="info">
                 <div class="card-header">
                   <h4 class="card-title">Team Members</h4>

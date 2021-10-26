@@ -201,18 +201,5 @@ export default function Cateproduct() {
   );
 }
 {
-  /* // <div class="slider-box">
-                    //     <p class="time">New</p>
-                    //     <div class="img-box">
-                    //         <img src={item.imageSrc} alt=""/>
-                    //     </div>
-                    //     <p class="detail">
-                    //     {item.name}
-                    //         <a href="#" class="price">{item.price}</a>
-                    //     </p>
-                    //     <div class="cart">
-                    //         <a href="#">Add to card</a>
-                    //     </div>
-                    // </div> 
-                   */
+
 }
