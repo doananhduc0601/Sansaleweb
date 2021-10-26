@@ -13,7 +13,7 @@ import { RiAdminLine } from "react-icons/ri";
 import { BrowserRouter, Route, Link } from "react-router-dom";
 import { BsArrowRightCircle, BsArrowDownCircle } from "react-icons/bs";
 import ProductList from "../../components/ProductList/ProductList";
-import Setting from "../../components/Setting/Setting";
+import Setting from "../../components/sideconf/Sideconf";
 import CategoryList from "../../components/CategoryList/CategoryList";
 import BaiViet from "../../components/BaiViet/Baiviet";
 
