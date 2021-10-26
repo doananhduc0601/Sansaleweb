@@ -127,7 +127,7 @@ export default function TaskForm_baiviet(props) {
     const data = editor.getData();
     // JSON.parse(data);
     setVal(data);
-    // values.description(data);
+    values.content1 = data;
   };
   return (
     <>

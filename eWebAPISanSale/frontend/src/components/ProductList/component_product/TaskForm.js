@@ -299,7 +299,6 @@ export default function TaskFrom(props) {
                         <option value={3}>3 . Food</option>
                         <option value={4}>4 . Quần áo</option>
                         <option value={5}>5 . Cosmectic</option>
-
                       </select>
                     </div>
                   </div>
@@ -334,9 +333,14 @@ export default function TaskFrom(props) {
                   <div class="col-md-4 pl-1">
                     <div class="form-group">
                       <label>Discount</label>
-                      <input type="" class="form-control" placeholder="#" name="detail"
+                      <input
+                        type=""
+                        class="form-control"
+                        placeholder="#"
+                        name="detail"
                         value={values.detail}
-                        onChange={handleInputChange} />
+                        onChange={handleInputChange}
+                      />
                     </div>
                   </div>
                 </div>
