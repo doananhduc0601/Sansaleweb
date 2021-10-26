@@ -1,11 +1,36 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import Header from '../../components/headerconteact/header'
 import Homemenu from '../../components/menuhome/homemenu'
 import Cateproduct from '../../components/Sanpham/cateproduct'
 import Footer from '../../pages/footer/footer'
+import axios from "axios";
+import parse from "html-react-parser";
 
 import "./baiviet.css"
 export default function Baiviethome() {
+    const [employeeList, setEmployeeList] = useState([]);
+
+  useEffect(() => {
+    refreshEmployeeList();
+  }, []);
+
+  const contentsApi = (
+    url = "https://localhost:5001/api/Contents"
+  ) => {
+    return {
+      fetchAll: () => axios.get(url),
+      update: (id, updatedRecord) => axios.put(url + id, updatedRecord),
+    };
+  };
+
+  function refreshEmployeeList() {
+    contentsApi()
+      .fetchAll()
+      .then((res) => {
+        setEmployeeList(res.data);
+      })
+      .catch((err) => console.log(err));
+  }
     return (
         <div>
             <Header/>
@@ -13,17 +38,21 @@ export default function Baiviethome() {
             <div className="container-bv">
                 <div className="container">
                     <div className="baiviet">
-                        <div className="baiviet-body">
-                            <h1 className="title">Giảm giá sock khi bạn ghé thăm trang web của chúng tôi</h1>
-                            <p className="metatitle">Qua dịp Shopee 10.10 bạn và mình lại đến với dịp Shopee 11.11 
-                            – Một trong số những đợt sale lớn nhất trong mùa mua sắm cuối năm. Vậy bạn đã biết đợt 
-                            Siêu Sale Shopee 11.11 tới đây có gì chưa? Mình tin chắc là chưa đúng không? Tiết lộ nhỏ nha
-                            , đợt này sale khủng lắm đấy! Nào là voucher hoàn xu có tổng giá trị lên đến 11 tỷ. Rồi thì 
-                            voucher 1.111K – 111K – 11K cho đến mã FreeShip đơn 0Đ dùng thoải mái. Cùng với đó là vô vàn 
-                            deals 0Đ, deals 1K, deals 11K cho bạn thỏa sức mua sắm luôn.
-                            Cụ thể đợt Shopee 11.11 này có những mã giảm giá nào? Những chương trình khuyến mãi và quà 
-                            tặng nào? Hãy cùng mình theo dõi hết bài viết dưới đây để tìm hiểu chi tiết nha!</p>
-                            <div className="meta-img"><img className="img1" src="./img/baiviet1.png"></img></div>
+                            {employeeList.map((item)=>{
+                            return(
+                                <div className="baiviet-body">
+                                    <h1 className="title">{item.name}</h1>
+                                     <p className="metatitle">{item.metaTitle}</p>
+                                     <div className="meta-img"> {parse(item.content1)}</div>
+                                </div>
+
+                            );
+                            }
+                            
+                            )}
+                           
+                    
+                            {/* <div className="meta-img"><img className="img1" src="./img/baiviet1.png"></img></div>
                             <h2>Lịch khuyến mãi Shopee 11.11</h2>
                             <p>Chương trình khuyến mãi Shopee 11.11 năm nay sẽ kéo dài trong gần một tháng lận luôn đó bạn.
                              Bắt đầu từ ngày 21/10 và kết thúc vào ngày 15/11.
@@ -50,8 +79,9 @@ export default function Baiviethome() {
                             </ul>
                             <p>Mỗi ngày trong đợt khuyến mãi Shopee 11.11 này đều có rất nhiều voucher giảm giá HOT được tung ra. Trong đó nổi bật nhất là voucher hoàn xu, voucher giảm 50%, voucher 11K, 111K hay thậm chí là voucher 1.111K trong ngày 11.11.
                             Khung giờ tung ra voucher thì thường là 0H – 9H – 12H 15H – 18H – 21H. Cụ thể các voucher đó là gì và điều kiện áp dụng ra sao bạn hãy theo dõi các kênh mạng xã hội của mình để được tiết lộ trước nhé.</p>
-                        </div>
-                    </div>
+                        
+                     */}
+                     </div>
                     <Cateproduct/>
                     
                 </div>

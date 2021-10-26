@@ -8,6 +8,7 @@ export default function BaiViet(props) {
   // const [editor, setEditor] = useState(null);
   const [employeeList, setEmployeeList] = useState([]);
   const [recordForEdit, setRecordForEdit] = useState(null);
+  const [number, setNumber] = useState(0);
 
   useEffect(() => {
     refreshEmployeeList();
@@ -85,6 +86,8 @@ export default function BaiViet(props) {
           recordForEdit={recordForEdit}
           isVisible={isVisible}
           setIsVisible={setIsVisible}
+          number={number}
+          setNumber={setNumber}
         />
         <TaskList_baiViet
           showRecordDetails={showRecordDetails}
@@ -92,6 +95,7 @@ export default function BaiViet(props) {
           employeeList={employeeList}
           setIsVisible={setIsVisible}
           isVisible={isVisible}
+          setNumber={setNumber}
         />
         <div>
           {/* {employeeList.map((item) => {

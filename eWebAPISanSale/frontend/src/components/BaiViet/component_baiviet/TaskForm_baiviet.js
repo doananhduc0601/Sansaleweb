@@ -4,6 +4,8 @@ import DecoupledEditor from "@ckeditor/ckeditor5-build-decoupled-document";
 import "../Baiviet.css";
 import { RiAddCircleLine } from "react-icons/ri";
 import { AiOutlineCloseCircle } from "react-icons/ai";
+import parse from "html-react-parser";
+
 const API_URL = "https://localhost:5001/api";
 const API_URL1 = "https://localhost:5001/Images";
 const UPLOAD_ENDPOINT = "Images/";
@@ -60,9 +62,10 @@ export default function TaskForm_baiviet(props) {
 
   const validate = () => {
     let temp = {};
-    temp.nameCategory = values.nameCategory == "" ? false : true;
+    temp.name = values.name == "" ? false : true;
+    temp.tags = values.tags == "" ? false : true;
+    temp.categoryId = values.categoryId == "" ? false : true;
     temp.metaTitle = values.metaTitle == "" ? false : true;
-    //temp.imageSrc = values.imageSrc == defaultImageSrc ? false : true;
     setErrors(temp);
     return Object.values(temp).every((x) => x == true);
   };
@@ -72,14 +75,31 @@ export default function TaskForm_baiviet(props) {
     setErrors({});
   };
 
+  const choose = () => {
+    if (props.number == 1) {
+      return { addData };
+    } else if (props.number == -1) {
+      return values.content1;
+    }
+  };
+  const handleChange = (e, editor) => {
+    const data = editor.getData();
+    // const data = editor.setData(values.content1);
+    // JSON.parse(data);
+    setVal(data);
+    // values.content1 = data;
+  };
   const handleFormSubmit = (e) => {
+    // props.setNumber(1);
     e.preventDefault();
     if (validate()) {
       const formData = new FormData();
       formData.append("id", values.id);
       formData.append("name", values.name);
       formData.append("metaTitle", values.metaTitle);
-      formData.append("content1", addData);
+      formData.append("content1",addData);
+      formData.append("content1",values.content1);
+
       formData.append("categoryId", values.categoryId);
       formData.append("tags", values.tags);
       addOrEdit(formData, resetForm);
@@ -121,12 +141,7 @@ export default function TaskForm_baiviet(props) {
       return uploadAdapter(loader);
     };
   }
-  const handleChange = (e, editor) => {
-    const data = editor.getData();
-    // JSON.parse(data);
-    setVal(data);
-    // values.description(data);
-  };
+
   return (
     <>
       <button
@@ -188,10 +203,9 @@ export default function TaskForm_baiviet(props) {
                   onChange={handleInputChange}
                 >
                   <option>Chọn......</option>
-                  <option value="a">a</option>
-                  <option value="b">b</option>
-                  <option value="c">c</option>
-                  <option value="d">d</option>
+                  <option value="dongho">Đồng hồ</option>
+                  <option value="laptop">Lap Top</option>
+                  <option value="salesock">Sale Sock</option>
                 </select>
               </div>
             </div>
@@ -249,16 +263,16 @@ export default function TaskForm_baiviet(props) {
                 }}
                 onChange={handleChange}
                 editor={DecoupledEditor}
-                data={addData}
+                data={values.content1}
                 config={{
                   extraPlugins: [uploadPlugin],
                 }}
                 name="content1"
-                value={values.content1}
-                onSubmit={handleInputChange}
               />
+              <hr style={{ height: 10 }}></hr>
+              {parse(values.content1)}
+              <hr style={{ height: 10 }}></hr>
             </div>
-            {/* <div> {console.log(addData)}</div> */}
             <div class="row">
               <div class="update ml-auto mr-auto">
                 <button type="submit" class="btn btn-primary btn-round">
